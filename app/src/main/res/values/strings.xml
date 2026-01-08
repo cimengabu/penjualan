@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">penjualan</string>
+    <string name="Selamat_Pagi">Selamat Pagi (%1$s)</string>
+    <string name="Selamat_Siang">Selamat Siang (%1$s)</string>
+    <string name="Selamat_Sore">Selamat Sore (%1$s)</string>
+    <string name="Selamat_Malam">Selamat Maalam (%1$s)</string>
+
+</resources>
