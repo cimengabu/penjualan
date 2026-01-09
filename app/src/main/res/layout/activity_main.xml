@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="20dp"
+    android:padding="16dp"
     tools:context=".MainActivity">
 
     <TextView
@@ -13,8 +13,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/Selamat_Pagi"
-        android:layout_marginTop="50dp"
-        android:layout_marginStart="2dp"
+        android:layout_marginTop="32dp"
         android:textSize="25sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
@@ -23,22 +22,75 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/card1"
         android:layout_width="match_parent"
-        android:layout_height="230dp"
+        android:layout_height="200dp"
         android:layout_marginTop="12dp"
         app:cardCornerRadius="20dp"
-        app:cardElevation="15dp"
-        app:cardMaxElevation="30dp"
-        app:layout_constraintTop_toBottomOf="@+id/SelamatPagi" >
+        app:cardElevation="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/SelamatPagi">
 
-        <TextView
-            android:id="@+id/Teks1"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Estinasi Hari Ini"
-            android:textStyle="bold"
-            android:textSize="18sp"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="5dp" />
+            android:layout_height="match_parent"
+            android:padding="16dp">
+
+            <TextView
+                android:id="@+id/tvTitleEstimasi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Estimasi Hari Ini"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/ivTransaksi"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:src="@drawable/transaction"
+                app:layout_constraintBottom_toTopOf="@+id/tvTransaksi"
+                app:layout_constraintEnd_toStartOf="@+id/ivLaporan"
+                app:layout_constraintHorizontal_chainStyle="spread"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvTitleEstimasi"
+                app:layout_constraintVertical_chainStyle="packed" />
+
+            <TextView
+                android:id="@+id/tvTransaksi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Transaksi"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/ivTransaksi"
+                app:layout_constraintStart_toStartOf="@+id/ivTransaksi"
+                app:layout_constraintTop_toBottomOf="@+id/ivTransaksi" />
+
+            <ImageView
+                android:id="@+id/ivLaporan"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:src="@drawable/resume"
+                app:layout_constraintBottom_toTopOf="@+id/tvLaporan"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/ivTransaksi"
+                app:layout_constraintTop_toBottomOf="@+id/tvTitleEstimasi"
+                app:layout_constraintVertical_chainStyle="packed" />
+
+            <TextView
+                android:id="@+id/tvLaporan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Laporan"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/ivLaporan"
+                app:layout_constraintStart_toStartOf="@+id/ivLaporan"
+                app:layout_constraintTop_toBottomOf="@+id/ivLaporan" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.cardview.widget.CardView>
 
@@ -46,216 +98,253 @@
         android:id="@+id/Teks2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Siap melayani pelanggan dengan setulus hati"
+        android:text="Siap melayani pelanggan"
         android:textStyle="bold"
         android:textSize="18sp"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="16dp"
         app:layout_constraintTop_toBottomOf="@+id/card1"/>
+
     <TextView
         android:id="@+id/teks3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Jangan kecewakan pelanggan"
-        android:textStyle="bold"
-        android:textSize="15sp"
         app:layout_constraintTop_toBottomOf="@+id/Teks2" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/card2"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:layout_marginTop="18dp"
-        app:cardCornerRadius="20dp"
-        app:cardElevation="12dp"
+        android:layout_width="0dp"
+        android:layout_height="110dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        app:cardCornerRadius="15dp"
+        app:layout_constraintHorizontal_chainStyle="spread"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/card3"
         app:layout_constraintTop_toBottomOf="@id/teks3">
 
-        <LinearLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:orientation="vertical">
+            android:layout_height="match_parent">
 
             <ImageView
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:src="@drawable/profile" />
+                android:id="@+id/img2"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/profile"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/txt2"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintVertical_chainStyle="packed" />
 
             <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="Profil"
-            android:textSize="16sp"
-            android:textStyle="bold" />
-
-        </LinearLayout>
+                android:id="@+id/txt2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="Profil"
+                android:textStyle="bold"
+                app:layout_constraintTop_toBottomOf="@id/img2"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
         android:id="@+id/card3"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:layout_marginTop="18dp"
-        app:cardElevation="12dp"
-        app:cardCornerRadius="20dp"
-        app:layout_constraintTop_toBottomOf="@+id/teks3"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        android:layout_width="0dp"
+        android:layout_height="110dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        app:cardCornerRadius="15dp"
+        app:layout_constraintStart_toEndOf="@+id/card2"
+        app:layout_constraintEnd_toStartOf="@+id/card4"
+        app:layout_constraintTop_toBottomOf="@+id/teks3">
 
-        <LinearLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:gravity="center">
+            android:layout_height="match_parent">
 
             <ImageView
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:src="@drawable/product" />
+                android:id="@+id/img3"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/product"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/txt3"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintVertical_chainStyle="packed" />
 
             <TextView
+                android:id="@+id/txt3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="4dp"
                 android:text="Produk"
-                android:textSize="16sp"
-                android:textStyle="bold"/>
-
-        </LinearLayout>
-
+                android:textStyle="bold"
+                app:layout_constraintTop_toBottomOf="@id/img3"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
-
 
     <androidx.cardview.widget.CardView
         android:id="@+id/card4"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        app:layout_constraintTop_toBottomOf="@id/teks3"
+        android:layout_width="0dp"
+        android:layout_height="110dp"
+        android:layout_marginTop="16dp"
+        app:cardCornerRadius="15dp"
+        app:layout_constraintStart_toEndOf="@+id/card3"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="18dp"
-        app:cardElevation="12dp"
-        app:cardCornerRadius="20dp">
+        app:layout_constraintTop_toBottomOf="@id/teks3">
 
-        <LinearLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:gravity="center">
+            android:layout_height="match_parent">
 
             <ImageView
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:src="@drawable/category" />
+                android:id="@+id/img4"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/category"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/txt4"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintVertical_chainStyle="packed" />
 
             <TextView
+                android:id="@+id/txt4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="4dp"
                 android:text="Kategori"
-                android:textSize="16sp"
-                android:textStyle="bold"/>
-
-        </LinearLayout>
-
+                android:textStyle="bold"
+                app:layout_constraintTop_toBottomOf="@id/img4"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
-
 
     <androidx.cardview.widget.CardView
         android:id="@+id/card5"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        app:layout_constraintTop_toBottomOf="@id/card2"
+        android:layout_width="0dp"
+        android:layout_height="110dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="8dp"
+        app:cardCornerRadius="15dp"
+        app:cardElevation="4dp"
+        app:layout_constraintEnd_toStartOf="@+id/card6"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:cardElevation="12dp"
-        app:cardCornerRadius="20dp">
+        app:layout_constraintTop_toBottomOf="@id/card2">
 
-        <LinearLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:gravity="center">
-
+            android:layout_height="match_parent">
             <ImageView
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:src="@drawable/employee" />
-
+                android:id="@+id/img5"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/employee"
+                app:layout_constraintBottom_toTopOf="@id/txt5"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_chainStyle="packed" />
             <TextView
+                android:id="@+id/txt5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="4dp"
                 android:text="Pegawai"
-                android:textSize="16sp"
-                android:textStyle="bold"/>
-
-        </LinearLayout>
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/img5" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
         android:id="@+id/card6"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        app:layout_constraintTop_toBottomOf="@+id/card3"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:cardElevation="12dp"
-        app:cardCornerRadius="20dp">
+        android:layout_width="0dp"
+        android:layout_height="110dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="8dp"
+        app:cardCornerRadius="15dp"
+        app:cardElevation="4dp"
+        app:layout_constraintEnd_toStartOf="@+id/card7"
+        app:layout_constraintStart_toEndOf="@+id/card5"
+        app:layout_constraintTop_toBottomOf="@+id/card3">
 
-        <LinearLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:gravity="center">
-
+            android:layout_height="match_parent">
             <ImageView
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:src="@drawable/branch" />
-
+                android:id="@+id/img6"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/branch"
+                app:layout_constraintBottom_toTopOf="@id/txt6"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_chainStyle="packed" />
             <TextView
+                android:id="@+id/txt6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="4dp"
                 android:text="Cabang"
-                android:textSidukze="16sp"
-                android:textStyle="bold"/>
-
-        </LinearLayout>
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/img6" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
         android:id="@+id/card7"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        app:layout_constraintTop_toBottomOf="@id/card4"
+        android:layout_width="0dp"
+        android:layout_height="110dp"
+        android:layout_marginTop="12dp"
+        app:cardCornerRadius="15dp"
+        app:cardElevation="4dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:cardElevation="12dp"
-        app:cardCornerRadius="20dp">
+        app:layout_constraintStart_toEndOf="@+id/card6"
+        app:layout_constraintTop_toBottomOf="@id/card4">
 
-        <LinearLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:gravity="center">
-
+            android:layout_height="match_parent">
             <ImageView
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:src="@drawable/print" />
-
+                android:id="@+id/img7"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/print"
+                app:layout_constraintBottom_toTopOf="@id/txt7"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_chainStyle="packed" />
             <TextView
+                android:id="@+id/txt7"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="4dp"
                 android:text="Printer"
-                android:textSize="16sp"
-                android:textStyle="bold"/>
-
-        </LinearLayout>
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/img7" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
