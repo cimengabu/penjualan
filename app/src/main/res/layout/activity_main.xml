@@ -12,8 +12,8 @@
         android:id="@+id/SelamatPagi"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/Selamat_Pagi"
         android:layout_marginTop="32dp"
+        android:text="@string/Selamat_Pagi"
         android:textSize="25sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
@@ -23,7 +23,7 @@
         android:id="@+id/card1"
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="16dp"
         app:cardCornerRadius="20dp"
         app:cardElevation="8dp"
         app:layout_constraintTop_toBottomOf="@+id/SelamatPagi">
@@ -75,8 +75,7 @@
                 app:layout_constraintBottom_toTopOf="@+id/tvLaporan"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/ivTransaksi"
-                app:layout_constraintTop_toBottomOf="@+id/tvTitleEstimasi"
-                app:layout_constraintVertical_chainStyle="packed" />
+                app:layout_constraintTop_toBottomOf="@+id/tvTitleEstimasi" />
 
             <TextView
                 android:id="@+id/tvLaporan"
@@ -91,18 +90,17 @@
                 app:layout_constraintTop_toBottomOf="@+id/ivLaporan" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-
     </androidx.cardview.widget.CardView>
 
     <TextView
         android:id="@+id/Teks2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
         android:text="Siap melayani pelanggan"
-        android:textStyle="bold"
         android:textSize="18sp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintTop_toBottomOf="@+id/card1"/>
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@+id/card1" />
 
     <TextView
         android:id="@+id/teks3"
@@ -118,26 +116,25 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
         app:cardCornerRadius="15dp"
+        app:cardElevation="6dp"
+        app:layout_constraintEnd_toStartOf="@+id/card3"
         app:layout_constraintHorizontal_chainStyle="spread"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/card3"
         app:layout_constraintTop_toBottomOf="@id/teks3">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-
             <ImageView
                 android:id="@+id/img2"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:src="@drawable/profile"
-                app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toTopOf="@id/txt2"
-                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_chainStyle="packed" />
-
             <TextView
                 android:id="@+id/txt2"
                 android:layout_width="wrap_content"
@@ -145,10 +142,10 @@
                 android:layout_marginTop="4dp"
                 android:text="Profil"
                 android:textStyle="bold"
-                app:layout_constraintTop_toBottomOf="@id/img2"
                 app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent" />
+                app:layout_constraintTop_toBottomOf="@id/img2" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 
@@ -159,25 +156,24 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
         app:cardCornerRadius="15dp"
-        app:layout_constraintStart_toEndOf="@+id/card2"
+        app:cardElevation="6dp"
         app:layout_constraintEnd_toStartOf="@+id/card4"
+        app:layout_constraintStart_toEndOf="@+id/card2"
         app:layout_constraintTop_toBottomOf="@+id/teks3">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-
             <ImageView
                 android:id="@+id/img3"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:src="@drawable/product"
-                app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toTopOf="@id/txt3"
-                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_chainStyle="packed" />
-
             <TextView
                 android:id="@+id/txt3"
                 android:layout_width="wrap_content"
@@ -185,10 +181,10 @@
                 android:layout_marginTop="4dp"
                 android:text="Produk"
                 android:textStyle="bold"
-                app:layout_constraintTop_toBottomOf="@id/img3"
                 app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent" />
+                app:layout_constraintTop_toBottomOf="@id/img3" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 
@@ -198,25 +194,24 @@
         android:layout_height="110dp"
         android:layout_marginTop="16dp"
         app:cardCornerRadius="15dp"
-        app:layout_constraintStart_toEndOf="@+id/card3"
+        app:cardElevation="6dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/card3"
         app:layout_constraintTop_toBottomOf="@id/teks3">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-
             <ImageView
                 android:id="@+id/img4"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:src="@drawable/category"
-                app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toTopOf="@id/txt4"
-                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_chainStyle="packed" />
-
             <TextView
                 android:id="@+id/txt4"
                 android:layout_width="wrap_content"
@@ -224,10 +219,10 @@
                 android:layout_marginTop="4dp"
                 android:text="Kategori"
                 android:textStyle="bold"
-                app:layout_constraintTop_toBottomOf="@id/img4"
                 app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent" />
+                app:layout_constraintTop_toBottomOf="@id/img4" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 
@@ -238,7 +233,7 @@
         android:layout_marginTop="12dp"
         android:layout_marginEnd="8dp"
         app:cardCornerRadius="15dp"
-        app:cardElevation="4dp"
+        app:cardElevation="6dp"
         app:layout_constraintEnd_toStartOf="@+id/card6"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/card2">
@@ -277,10 +272,10 @@
         android:layout_marginTop="12dp"
         android:layout_marginEnd="8dp"
         app:cardCornerRadius="15dp"
-        app:cardElevation="4dp"
+        app:cardElevation="6dp"
         app:layout_constraintEnd_toStartOf="@+id/card7"
         app:layout_constraintStart_toEndOf="@+id/card5"
-        app:layout_constraintTop_toBottomOf="@+id/card3">
+        app:layout_constraintTop_toBottomOf="@+id/card2">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -315,10 +310,10 @@
         android:layout_height="110dp"
         android:layout_marginTop="12dp"
         app:cardCornerRadius="15dp"
-        app:cardElevation="4dp"
+        app:cardElevation="6dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/card6"
-        app:layout_constraintTop_toBottomOf="@id/card4">
+        app:layout_constraintTop_toBottomOf="@id/card2">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
