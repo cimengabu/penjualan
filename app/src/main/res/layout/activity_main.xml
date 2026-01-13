@@ -29,6 +29,8 @@
         app:layout_constraintTop_toBottomOf="@+id/SelamatPagi">
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:padding="16dp">
@@ -75,7 +77,8 @@
                 app:layout_constraintBottom_toTopOf="@+id/tvLaporan"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/ivTransaksi"
-                app:layout_constraintTop_toBottomOf="@+id/tvTitleEstimasi" />
+                app:layout_constraintTop_toTopOf="@+id/ivTransaksi"
+                app:layout_constraintVertical_chainStyle="packed" />
 
             <TextView
                 android:id="@+id/tvLaporan"
@@ -84,7 +87,7 @@
                 android:layout_marginTop="8dp"
                 android:text="Laporan"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintBottom_toBottomOf="@+id/tvTransaksi"
                 app:layout_constraintEnd_toEndOf="@+id/ivLaporan"
                 app:layout_constraintStart_toStartOf="@+id/ivLaporan"
                 app:layout_constraintTop_toBottomOf="@+id/ivLaporan" />
