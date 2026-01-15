@@ -1,4 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">penjualan</string>
+    <string name="app_name">Sales</string>
+
+    <string name="Selamat_Pagi">Good Morning (%1$s)</string>
+    <string name="Selamat_Siang">Good Afternoon (%1$s)</string>
+    <string name="Selamat_Sore">Good Evening (%1$s)</string>
+    <string name="Selamat_Malam">Good Night (%1$s)</string>
+
+    <string name="estimasi_hari_ini">Today\'s Estimation</string>
+    <string name="transaksi">Transaction</string>
+    <string name="laporan">Report</string>
+    <string name="siap_melayani_pelanggan">Ready to serve customers</string>
+    <string name="jangan_kecewakan_pelanggan">Don\'t disappoint customers</string>
+    <string name="profil">Profile</string>
+    <string name="produk">Product</string>
+    <string name="kategori">Category</string>
+    <string name="pegawai">Employee</string>
+    <string name="cabang">Branch</string>
+    <string name="mencetak">Print</string>
 </resources>
