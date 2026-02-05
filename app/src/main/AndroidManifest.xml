@@ -12,6 +12,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Penjualan">
         <activity
+            android:name=".kategori.ItemData"
+            android:exported="false" />
+        <activity
+            android:name="kategori.ModkategoriActivity"
+            android:exported="false" />
+        <activity
+            android:name=".kategori.DatakategoriActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>

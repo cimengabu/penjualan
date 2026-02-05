@@ -9,7 +9,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_card)
 
         // Inisialisasi CardView berdasarkan ID di XML
         val cardProfil = findViewById<CardView>(R.id.card2)
