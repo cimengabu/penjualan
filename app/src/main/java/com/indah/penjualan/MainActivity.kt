@@ -1,35 +1,71 @@
-package com.indah.penjualan // Sesuaikan dengan package name anda
+package com.example.yourapp // Sesuaikan dengan package project Anda
 
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.cardview.widget.CardView
+import com.example.yourapp.databinding.ActivityMainBinding // Nama class binding dihasilkan otomatis dari activity_main.xml
 
 class MainActivity : AppCompatActivity() {
 
+    // Inisialisasi properti untuk view binding
+    private lateinit var binding: ActivityMainBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_card)
 
-        // Inisialisasi CardView berdasarkan ID di XML
-        val cardProfil = findViewById<CardView>(R.id.card2)
-        val cardProduk = findViewById<CardView>(R.id.card3)
-        val cardKategori = findViewById<CardView>(R.id.card4)
-        val cardPegawai = findViewById<CardView>(R.id.card5)
-        val cardCabang = findViewById<CardView>(R.id.card6)
-        val cardPrinter = findViewById<CardView>(R.id.card7)
+        // Membaca layout XML menggunakan binding
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        // Contoh Memberikan Aksi Klik
-        cardProfil.setOnClickListener {
-            // Mengambil teks dari strings.xml lewat kode Kotlin
-            val pesan = getString(R.string.profil)
-            Toast.makeText(this, "Membuka Menu $pesan", Toast.LENGTH_SHORT).show()
+        // --- CONTOH MENANGKAP AKSI KLIK PADA MENU DI DALAM CARD ---
+
+        // Pilihan menu Transaksi di dalam Card Besar (card1)
+        binding.ivTransaksi.setOnClickListener {
+            showToast("Menu Transaksi dipilih")
+        }
+        binding.tvTransaksi.setOnClickListener {
+            showToast("Menu Transaksi dipilih")
         }
 
-        cardProduk.setOnClickListener {
-            Toast.makeText(this, "Membuka Menu Produk", Toast.LENGTH_SHORT).show()
+        binding.ivLaporan.setOnClickListener {
+            showToast("Menu Laporan dipilih")
         }
 
-        // Tambahkan aksi untuk card lainnya di sini...
+        // --- CONTOH MENANGKAP AKSI KLIK PADA GRID MENU (CARD 2 - CARD 7) ---
+
+        // Card Profil
+        binding.card2.setOnClickListener {
+            showToast("Membuka Profil")
+        }
+
+        // Card Produk
+        binding.card3.setOnClickListener {
+            showToast("Membuka Produk")
+        }
+
+        // Card Kategori
+        binding.card4.setOnClickListener {
+            showToast("Membuka Kategori")
+        }
+
+        // Card Pegawai
+        binding.card5.setOnClickListener {
+            showToast("Membuka Data Pegawai")
+        }
+
+        // Card Cabang
+        binding.card6.setOnClickListener {
+            showToast("Membuka Info Cabang")
+        }
+
+        // Card Cetak
+        binding.card7.setOnClickListener {
+            showToast("Membuka Menu Cetak")
+        }
+    }
+
+    // Fungsi pembantu untuk memunculkan pesan singkat (Toast)
+    private fun showToast(message: String) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
 }

@@ -18,4 +18,9 @@
     <string name="pegawai">Pegawai</string>
     <string name="cabang">Cabang</string>
     <string name="mencetak">Mencetak</string>
+
+    <string-array name="status_array">
+        <item>Aktif</item>
+        <item>Nonaktif</item>
+    </string-array>
 </resources>

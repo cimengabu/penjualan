@@ -1,16 +1,14 @@
 pluginManagement {
     repositories {
-        google {
-            content {
-                includeGroupByRegex("com\\.android.*")
-                includeGroupByRegex("com\\.google.*")
-                includeGroupByRegex("androidx.*")
-            }
-        }
-        mavenCentral()
         gradlePluginPortal()
+        google()
+        mavenCentral()
+    }
+    plugins {
+        id("dagger.hilt.android.plugin") version "2.52"
     }
 }
+
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
@@ -19,6 +17,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "penjualan"
+rootProject.name = "Penjualan"
 include(":app")
- 
