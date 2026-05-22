@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "939631521830",
+    "firebase_url": "https://penjualan-indah-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "penjualan-indah",
+    "storage_bucket": "penjualan-indah.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:939631521830:android:45b9e823b1889a339636e7",
+        "android_client_info": {
+          "package_name": "com.example.penjualan"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBo0awGQormUmA6A0RiXyFYSnGtAQszfcg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

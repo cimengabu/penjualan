@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.penjualan">
-
+<manifest package="com.example.penjualan" xmlns:android="http://schemas.android.com/apk/res/android">
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
+        android:name=".PenjualanApplication"
         android:allowBackup="true"
+        android:label="Penjualan"
         android:icon="@mipmap/ic_launcher"
         android:roundIcon="@mipmap/ic_launcher_round"
-        android:label="Penjualan"
         android:theme="@style/Theme.Penjualan">
+
         <activity android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
@@ -17,6 +17,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-    </application>
 
+        <activity android:name=".kategori.DatakategoriActivity" android:exported="false" />
+        <activity android:name=".kategori.ModKategoriActivity" android:exported="false" />
+        <activity android:name=".produk.ProdukActivity" android:exported="false" />
+        <activity android:name=".pegawai.PegawaiActivity" android:exported="false" />
+        <activity android:name=".cabang.CabangActivity" android:exported="false" />
+        <activity android:name=".transaksi.TransaksiActivity" android:exported="false" />
+        <activity android:name=".laporan.LaporanActivity" android:exported="false" />
+        <activity android:name=".profil.ProfilActivity" android:exported="false" />
+        <activity android:name=".cetak.CetakActivity" android:exported="false" />
+    </application>
 </manifest>
