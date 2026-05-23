@@ -10,9 +10,19 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
 import com.example.penjualan.kategori.DatakategoriActivity
 import com.example.penjualan.produk.ProdukActivity
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
+import java.text.NumberFormat
 import java.util.Calendar
+import java.util.Locale
 
 class MainActivity : AppCompatActivity() {
+
+    private val database = FirebaseDatabase.getInstance("https://penjualan-indah-default-rtdb.asia-southeast1.firebasedatabase.app/")
+    private val productsRef = database.getReference("produk")
+    private val transaksiRef = database.getReference("transaksi")
 
     private lateinit var tvGreeting: TextView
     private lateinit var cardProfil: CardView
@@ -85,6 +95,38 @@ class MainActivity : AppCompatActivity() {
         tvLaporan.setOnClickListener { 
             startActivity(Intent(this, com.example.penjualan.laporan.LaporanActivity::class.java)) 
         }
+
+        // Fetch Dashboard Analytics
+        fetchAnalyticsData()
+    }
+
+    private fun fetchAnalyticsData() {
+        // Fetch Total Products
+        productsRef.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val count = snapshot.childrenCount
+                tvLaporan.text = "$count Produk"
+            }
+            override fun onCancelled(error: DatabaseError) {}
+        })
+
+        // Fetch Total Transactions & Income
+        transaksiRef.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                var totalIncome = 0.0
+                val count = snapshot.childrenCount
+                for (data in snapshot.children) {
+                    // Try parsing as double or string since Firebase sometimes stores numbers as strings
+                    val totalStr = data.child("totalHarga").value?.toString() ?: "0"
+                    val totalHarga = totalStr.toDoubleOrNull() ?: 0.0
+                    totalIncome += totalHarga
+                }
+                
+                val formatRupiah = NumberFormat.getCurrencyInstance(Locale("in", "ID"))
+                tvTransaksi.text = "$count Trx\n${formatRupiah.format(totalIncome)}"
+            }
+            override fun onCancelled(error: DatabaseError) {}
+        })
     }
 
     private fun setGreetingMessage() {

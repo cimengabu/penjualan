@@ -6,7 +6,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F8F9FA"
+    android:background="@color/colorBackground"
     tools:context=".kategori.DatakategoriActivity">
 
     <LinearLayout
@@ -24,7 +24,7 @@
             android:layout_height="32dp"
             android:src="@drawable/arrow"
             android:padding="4dp"
-            app:tint="#333333"/>
+            app:tint="@color/colorOnSurface"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -32,7 +32,7 @@
             android:text="Data Kategori"
             android:textSize="20sp"
             android:textStyle="bold"
-            android:textColor="#333333"
+            android:textColor="@color/colorOnSurface"
             android:layout_marginStart="16dp"/>
 
     </LinearLayout>
@@ -64,7 +64,7 @@
         android:src="@drawable/plus"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:tint="#FFFFFF"
-        android:backgroundTint="#2E7D32"/>
+        app:tint="@color/colorOnPrimary"
+        android:backgroundTint="@color/colorPrimary"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

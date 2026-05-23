@@ -35,7 +35,7 @@
                 android:layout_width="45dp"
                 android:layout_height="47dp"
                 android:background="@drawable/tag"
-                android:backgroundTint="#333333"
+                android:backgroundTint="@color/colorOnSurface"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -71,10 +71,10 @@
 
             app:chipBackgroundColor="@android:color/transparent"
             app:chipStrokeWidth="1dp"
-            app:chipStrokeColor="#D0D0D0"
+            app:chipStrokeColor="@color/colorDivider"
 
             app:chipCornerRadius="5dp"
-            app:rippleColor="#E0E0E0"/>
+            app:rippleColor="?android:attr/colorControlHighlight"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 

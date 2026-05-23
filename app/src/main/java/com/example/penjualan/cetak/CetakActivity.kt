@@ -18,6 +18,7 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import java.text.NumberFormat
 import java.text.SimpleDateFormat
+import java.util.Calendar
 import java.util.Date
 import java.util.Locale
 
@@ -95,33 +96,44 @@ class CetakActivity : AppCompatActivity() {
             <html>
                 <head>
                     <style>
-                        body { font-family: sans-serif; margin: 40px; }
-                        h1 { text-align: center; margin-bottom: 5px; }
-                        p { margin-top: 5px; }
-                        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
-                        th, td { border: 1px solid #000; padding: 8px; }
-                        th { background-color: #f2f2f2; }
-                        .total-row td { font-weight: bold; }
+                        body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; margin: 40px; color: #333; }
+                        .header { text-align: center; margin-bottom: 30px; }
+                        h1 { color: #4F46E5; margin-bottom: 5px; font-size: 28px; }
+                        .subtitle { color: #64748B; font-size: 14px; margin-top: 0; }
+                        .meta-info { margin-bottom: 20px; font-size: 14px; }
+                        table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+                        th, td { border-bottom: 1px solid #E2E8F0; padding: 12px 8px; text-align: left; }
+                        th { background-color: #F8FAFC; color: #475569; font-weight: bold; text-transform: uppercase; font-size: 12px; }
+                        td { font-size: 14px; }
+                        .total-row td { font-weight: bold; font-size: 16px; color: #0F766E; border-top: 2px solid #4F46E5; }
+                        .footer { text-align: center; margin-top: 60px; font-size: 12px; color: #94A3B8; }
                     </style>
                 </head>
                 <body>
-                    <h1>Laporan Penjualan Toko</h1>
-                    <hr>
-                    <p><b>Tanggal Cetak:</b> $dateString</p>
+                    <div class="header">
+                        <h1>LAPORAN PENJUALAN</h1>
+                        <p class="subtitle">Laporan Resmi Transaksi Toko</p>
+                    </div>
+                    <div class="meta-info">
+                        <p><b>Tanggal Cetak:</b> $dateString</p>
+                    </div>
                     <table>
                         <tr>
                             <th>Nama Produk</th>
                             <th>Kategori</th>
-                            <th>Jumlah</th>
-                            <th>Total</th>
+                            <th style='text-align:center;'>Qty</th>
+                            <th style='text-align:right;'>Total Harga</th>
                         </tr>
                         $tableRows
                         <tr class="total-row">
-                            <td colspan="3" style='text-align:right;'>Total Keseluruhan</td>
+                            <td colspan="3" style='text-align:right;'>TOTAL PENDAPATAN</td>
                             <td style='text-align:right;'>${fmt.format(totalKeseluruhan)}</td>
                         </tr>
                     </table>
-                    <p style="text-align:center; margin-top:50px;"><i>Terima kasih atas kunjungannya.</i></p>
+                    <div class="footer">
+                        <p>Dokumen ini di-generate secara otomatis oleh sistem.</p>
+                        <p>&copy; ${Calendar.getInstance().get(Calendar.YEAR)} Aplikasi Penjualan</p>
+                    </div>
                 </body>
             </html>
         """.trimIndent()

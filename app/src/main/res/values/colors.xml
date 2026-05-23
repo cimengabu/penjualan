@@ -2,4 +2,23 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    
+    <!-- Light Mode Palette (Cute Teddy Bear Concept) -->
+    <color name="colorPrimary">#A67C52</color> <!-- Milk Chocolate -->
+    <color name="colorPrimaryVariant">#8B5A2B</color> <!-- Dark Chocolate -->
+    <color name="colorOnPrimary">#FFFFFF</color>
+    
+    <color name="colorSecondary">#FFB6C1</color> <!-- Pastel Pink -->
+    <color name="colorSecondaryVariant">#FF69B4</color>
+    <color name="colorOnSecondary">#5C4033</color>
+    
+    <color name="colorBackground">#FFF8E7</color> <!-- Creamy Beige -->
+    <color name="colorSurface">#FFFFFF</color>
+    <color name="colorOnBackground">#5C4033</color> <!-- Dark Brown Text -->
+    <color name="colorOnSurface">#5C4033</color>
+    <color name="colorError">#E57373</color>
+    <color name="colorOnError">#FFFFFF</color>
+
+    <color name="colorTextSecondary">#8D6E63</color>
+    <color name="colorDivider">#EFEBE9</color>
 </resources>
