@@ -1,10 +1,10 @@
 package com.example.penjualan
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
@@ -36,6 +36,11 @@ class MainActivity : AppCompatActivity() {
     private lateinit var tvTransaksi: TextView
     private lateinit var ivLaporan: ImageView
     private lateinit var tvLaporan: TextView
+    private lateinit var ivSettings: ImageView
+
+    override fun attachBaseContext(newBase: Context) {
+        super.attachBaseContext(LocaleHelper.onAttach(newBase))
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -54,6 +59,7 @@ class MainActivity : AppCompatActivity() {
         tvTransaksi = findViewById(R.id.tvTransaksi)
         ivLaporan = findViewById(R.id.ivLaporan)
         tvLaporan = findViewById(R.id.tvLaporan)
+        ivSettings = findViewById(R.id.ivSettings)
 
         // Set Dynamic Greeting
         setGreetingMessage()
@@ -67,6 +73,10 @@ class MainActivity : AppCompatActivity() {
         cardProduk.setOnClickListener {
             val intent = Intent(this, ProdukActivity::class.java)
             startActivity(intent)
+        }
+        
+        ivSettings.setOnClickListener {
+            startActivity(Intent(this, SettingsActivity::class.java))
         }
 
         // Setup Placeholder Actions
@@ -116,7 +126,6 @@ class MainActivity : AppCompatActivity() {
                 var totalIncome = 0.0
                 val count = snapshot.childrenCount
                 for (data in snapshot.children) {
-                    // Try parsing as double or string since Firebase sometimes stores numbers as strings
                     val totalStr = data.child("totalHarga").value?.toString() ?: "0"
                     val totalHarga = totalStr.toDoubleOrNull() ?: 0.0
                     totalIncome += totalHarga
@@ -139,7 +148,7 @@ class MainActivity : AppCompatActivity() {
             else -> R.string.Selamat_Malam
         }
 
-        val userName = "Admin Cimeng"
+        val userName = "Admin"
         val greetingText = getString(greetingRes, userName)
         tvGreeting.text = greetingText
     }
@@ -147,7 +156,7 @@ class MainActivity : AppCompatActivity() {
     private fun showPlaceholderDialog(menuName: String) {
         AlertDialog.Builder(this)
             .setTitle(menuName)
-            .setMessage("Menu \"$menuName\" masih dalam pengembangan dan akan segera hadir dalam pembaruan berikutnya.")
+            .setMessage("Menu \"$menuName\" masih dalam pengembangan.")
             .setPositiveButton("Mengerti", null)
             .show()
     }

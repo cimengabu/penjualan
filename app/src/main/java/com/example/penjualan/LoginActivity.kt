@@ -2,14 +2,14 @@ package com.example.penjualan
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.View
+import android.util.Log
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.button.MaterialButton
-import com.google.android.material.progressindicator.CircularProgressIndicator
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
+import com.google.firebase.FirebaseNetworkException
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
 import com.google.firebase.auth.FirebaseAuthInvalidUserException
@@ -63,6 +63,9 @@ class LoginActivity : AppCompatActivity() {
             if (email.isEmpty()) {
                 tilEmail.error = "Email tidak boleh kosong"
                 valid = false
+            } else if (!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+                tilEmail.error = "Format email tidak valid"
+                valid = false
             }
             if (password.isEmpty()) {
                 tilPassword.error = "Password tidak boleh kosong"
@@ -76,15 +79,20 @@ class LoginActivity : AppCompatActivity() {
                 .addOnCompleteListener(this) { task ->
                     setLoading(false)
                     if (task.isSuccessful) {
+                        Log.d("LoginActivity", "Login sukses")
                         goToDashboard()
                     } else {
-                        val errorMsg = when (task.exception) {
+                        val exception = task.exception
+                        Log.e("LoginActivity", "Login gagal", exception)
+                        val errorMsg = when (exception) {
                             is FirebaseAuthInvalidUserException ->
                                 "Akun tidak ditemukan. Silakan daftar terlebih dahulu."
                             is FirebaseAuthInvalidCredentialsException ->
                                 "Email atau password salah."
+                            is FirebaseNetworkException ->
+                                "Tidak ada koneksi internet. Coba lagi."
                             else ->
-                                "Login gagal: ${task.exception?.message}"
+                                "Login gagal: ${exception?.localizedMessage}"
                         }
                         Toast.makeText(this, errorMsg, Toast.LENGTH_LONG).show()
                     }
@@ -98,7 +106,7 @@ class LoginActivity : AppCompatActivity() {
 
     private fun setLoading(loading: Boolean) {
         btnLogin.isEnabled = !loading
-        btnLogin.text = if (loading) "Memproses..." else "Masuk 🐻"
+        btnLogin.text = if (loading) "Memproses..." else "Masuk"
     }
 
     private fun goToDashboard() {

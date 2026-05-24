@@ -1,21 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Dark Mode Palette (Warm Cocoa Concept) -->
-    <color name="colorPrimary">#D7CCC8</color> <!-- Light Beige -->
-    <color name="colorPrimaryVariant">#A67C52</color>
-    <color name="colorOnPrimary">#3E2723</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
     
-    <color name="colorSecondary">#FFC0CB</color> <!-- Pastel Pink -->
-    <color name="colorSecondaryVariant">#FF69B4</color>
-    <color name="colorOnSecondary">#3E2723</color>
+    <!-- Premium Pink Dark Mode Palette -->
+    <color name="colorPrimary">#F472B6</color> <!-- Soft Pink for Dark Mode -->
+    <color name="colorPrimaryVariant">#DB2777</color> <!-- Darker Pink -->
+    <color name="colorOnPrimary">#FFFFFF</color>
     
-    <color name="colorBackground">#3E2723</color> <!-- Very Dark Cocoa -->
-    <color name="colorSurface">#4E342E</color> <!-- Lighter Cocoa Card -->
-    <color name="colorOnBackground">#FFF8E7</color>
-    <color name="colorOnSurface">#FFF8E7</color>
-    <color name="colorError">#E57373</color>
-    <color name="colorOnError">#3E2723</color>
+    <color name="colorSecondary">#F9A8D4</color>
+    <color name="colorSecondaryVariant">#BE185D</color>
+    <color name="colorOnSecondary">#121212</color>
+    
+    <color name="colorBackground">#121212</color> <!-- Deep Black -->
+    <color name="colorSurface">#1E1E1E</color> <!-- Dark Gray for Cards -->
+    <color name="colorOnBackground">#E0E0E0</color> <!-- Light Gray Text -->
+    <color name="colorOnSurface">#E0E0E0</color>
+    
+    <color name="colorError">#CF6679</color>
+    <color name="colorOnError">#000000</color>
 
-    <color name="colorTextSecondary">#D7CCC8</color>
-    <color name="colorDivider">#5D4037</color>
+    <color name="colorTextSecondary">#A0A0A0</color> <!-- Gray Text -->
+    <color name="colorDivider">#333333</color> <!-- Dark Divider -->
 </resources>

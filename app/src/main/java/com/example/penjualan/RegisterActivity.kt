@@ -1,11 +1,13 @@
 package com.example.penjualan
 
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
+import com.google.firebase.FirebaseNetworkException
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthUserCollisionException
 import com.google.firebase.auth.FirebaseAuthWeakPasswordException
@@ -46,6 +48,9 @@ class RegisterActivity : AppCompatActivity() {
             if (email.isEmpty()) {
                 tilEmail.error = "Email tidak boleh kosong"
                 valid = false
+            } else if (!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+                tilEmail.error = "Format email tidak valid"
+                valid = false
             }
             if (password.isEmpty()) {
                 tilPassword.error = "Password tidak boleh kosong"
@@ -62,20 +67,25 @@ class RegisterActivity : AppCompatActivity() {
                 .addOnCompleteListener(this) { task ->
                     setLoading(false)
                     if (task.isSuccessful) {
+                        Log.d("RegisterActivity", "Register sukses")
                         Toast.makeText(
                             this,
-                            "🐻 Akun berhasil dibuat! Silakan masuk.",
+                            "Akun berhasil dibuat! Silakan masuk.",
                             Toast.LENGTH_SHORT
                         ).show()
                         finish() // Kembali ke LoginActivity
                     } else {
-                        val errorMsg = when (task.exception) {
+                        val exception = task.exception
+                        Log.e("RegisterActivity", "Register gagal", exception)
+                        val errorMsg = when (exception) {
                             is FirebaseAuthUserCollisionException ->
                                 "Email ini sudah terdaftar. Coba masuk."
                             is FirebaseAuthWeakPasswordException ->
                                 "Password terlalu lemah. Gunakan minimal 6 karakter."
+                            is FirebaseNetworkException ->
+                                "Tidak ada koneksi internet. Coba lagi."
                             else ->
-                                "Pendaftaran gagal: ${task.exception?.message}"
+                                "Pendaftaran gagal: ${exception?.localizedMessage}"
                         }
                         Toast.makeText(this, errorMsg, Toast.LENGTH_LONG).show()
                     }
@@ -87,6 +97,6 @@ class RegisterActivity : AppCompatActivity() {
 
     private fun setLoading(loading: Boolean) {
         btnRegister.isEnabled = !loading
-        btnRegister.text = if (loading) "Mendaftarkan..." else "Daftar Sekarang 🐻"
+        btnRegister.text = if (loading) "Mendaftarkan..." else "Daftar Sekarang"
     }
 }

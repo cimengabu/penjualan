@@ -3,22 +3,23 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     
-    <!-- Light Mode Palette (Cute Teddy Bear Concept) -->
-    <color name="colorPrimary">#A67C52</color> <!-- Milk Chocolate -->
-    <color name="colorPrimaryVariant">#8B5A2B</color> <!-- Dark Chocolate -->
+    <!-- Premium Pink Mode Palette -->
+    <color name="colorPrimary">#FF85A1</color> <!-- Cute Pink -->
+    <color name="colorPrimaryVariant">#FF4D6D</color> <!-- Dark Pink -->
     <color name="colorOnPrimary">#FFFFFF</color>
     
-    <color name="colorSecondary">#FFB6C1</color> <!-- Pastel Pink -->
-    <color name="colorSecondaryVariant">#FF69B4</color>
-    <color name="colorOnSecondary">#5C4033</color>
+    <color name="colorSecondary">#F9A8D4</color> <!-- Light Pink -->
+    <color name="colorSecondaryVariant">#F472B6</color> <!-- Deep Pink -->
+    <color name="colorOnSecondary">#000000</color>
     
-    <color name="colorBackground">#FFF8E7</color> <!-- Creamy Beige -->
-    <color name="colorSurface">#FFFFFF</color>
-    <color name="colorOnBackground">#5C4033</color> <!-- Dark Brown Text -->
-    <color name="colorOnSurface">#5C4033</color>
-    <color name="colorError">#E57373</color>
+    <color name="colorBackground">#FFF0F5</color> <!-- Lavender Blush / Very Light Pink -->
+    <color name="colorSurface">#FFFFFF</color> <!-- White for Cards -->
+    <color name="colorOnBackground">#333333</color> <!-- Dark Text -->
+    <color name="colorOnSurface">#333333</color>
+    
+    <color name="colorError">#B00020</color>
     <color name="colorOnError">#FFFFFF</color>
 
-    <color name="colorTextSecondary">#8D6E63</color>
-    <color name="colorDivider">#EFEBE9</color>
+    <color name="colorTextSecondary">#757575</color> <!-- Gray Text -->
+    <color name="colorDivider">#E0E0E0</color> <!-- Light Divider -->
 </resources>
