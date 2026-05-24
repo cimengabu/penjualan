@@ -36,13 +36,14 @@ class MainActivity : AppCompatActivity() {
     private lateinit var cardPegawai: CardView
     private lateinit var cardCabang: CardView
     private lateinit var cardMencetak: CardView
-    private lateinit var cardPelanggan: CardView
-    private lateinit var cardRiwayatTrx: CardView
 
     private lateinit var ivTransaksi: ImageView
     private lateinit var tvTransaksi: TextView
     private lateinit var ivLaporan: ImageView
     private lateinit var tvLaporan: TextView
+    private lateinit var llPelanggan: android.widget.LinearLayout
+    private lateinit var ivPelanggan: ImageView
+    private lateinit var tvPelanggan: TextView
     private lateinit var ivSettings: ImageView
 
     private lateinit var tvTodayIncome: TextView
@@ -67,13 +68,14 @@ class MainActivity : AppCompatActivity() {
         cardPegawai      = findViewById(R.id.card5)
         cardCabang       = findViewById(R.id.card6)
         cardMencetak     = findViewById(R.id.card7)
-        cardPelanggan    = findViewById(R.id.cardPelanggan)
-        cardRiwayatTrx   = findViewById(R.id.cardRiwayatTrx)
 
         ivTransaksi      = findViewById(R.id.ivTransaksi)
         tvTransaksi      = findViewById(R.id.tvTransaksi)
         ivLaporan        = findViewById(R.id.ivLaporan)
         tvLaporan        = findViewById(R.id.tvLaporan)
+        llPelanggan      = findViewById(R.id.llPelanggan)
+        ivPelanggan      = findViewById(R.id.ivPelanggan)
+        tvPelanggan      = findViewById(R.id.tvPelanggan)
         ivSettings       = findViewById(R.id.ivSettings)
 
         tvTodayIncome    = findViewById(R.id.tvTodayIncome)
@@ -88,13 +90,14 @@ class MainActivity : AppCompatActivity() {
         btnKasirPOS.setOnClickListener      { startActivity(Intent(this, PosActivity::class.java)) }
         cardKategori.setOnClickListener     { startActivity(Intent(this, DatakategoriActivity::class.java)) }
         cardProduk.setOnClickListener       { startActivity(Intent(this, ProdukActivity::class.java)) }
-        cardPelanggan.setOnClickListener    { startActivity(Intent(this, PelangganActivity::class.java)) }
+        llPelanggan.setOnClickListener      { startActivity(Intent(this, PelangganActivity::class.java)) }
+        ivPelanggan.setOnClickListener      { startActivity(Intent(this, PelangganActivity::class.java)) }
+        tvPelanggan.setOnClickListener      { startActivity(Intent(this, PelangganActivity::class.java)) }
         ivSettings.setOnClickListener       { startActivity(Intent(this, SettingsActivity::class.java)) }
         cardProfil.setOnClickListener       { startActivity(Intent(this, com.example.penjualan.profil.ProfilActivity::class.java)) }
         cardPegawai.setOnClickListener      { startActivity(Intent(this, com.example.penjualan.pegawai.PegawaiActivity::class.java)) }
         cardCabang.setOnClickListener       { startActivity(Intent(this, com.example.penjualan.cabang.CabangActivity::class.java)) }
         cardMencetak.setOnClickListener     { startActivity(Intent(this, com.example.penjualan.cetak.CetakActivity::class.java)) }
-        cardRiwayatTrx.setOnClickListener   { startActivity(Intent(this, com.example.penjualan.transaksi.TransaksiActivity::class.java)) }
         ivTransaksi.setOnClickListener      { startActivity(Intent(this, com.example.penjualan.transaksi.TransaksiActivity::class.java)) }
         tvTransaksi.setOnClickListener      { startActivity(Intent(this, com.example.penjualan.transaksi.TransaksiActivity::class.java)) }
         ivLaporan.setOnClickListener        { startActivity(Intent(this, com.example.penjualan.laporan.LaporanActivity::class.java)) }

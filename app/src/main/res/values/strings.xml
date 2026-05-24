@@ -94,4 +94,33 @@
     <string name="harga_jual">Harga Jual</string>
     <string name="pengaturan">Pengaturan</string>
     <string name="pencarian">Pencarian...</string>
+
+    <string name="nota_pembayaran">NOTA PEMBAYARAN</string>
+    <string name="no_nota">No. Nota :</string>
+    <string name="waktu">Waktu :</string>
+    <string name="kasir">Kasir :</string>
+    <string name="pelanggan_nota">Pelanggan :</string>
+    <string name="item">ITEM</string>
+    <string name="qty">QTY</string>
+    <string name="harga">HARGA</string>
+    <string name="jumlah_nota">JUMLAH</string>
+    <string name="subtotal">Subtotal :</string>
+    <string name="diskon">Diskon :</string>
+    <string name="pajak">Pajak :</string>
+    <string name="total_nota">TOTAL</string>
+    <string name="metode_bayar">Metode Bayar :</string>
+    <string name="dibayar">Dibayar :</string>
+    <string name="kembalian">Kembalian :</string>
+    <string name="terima_kasih">Terima Kasih!</string>
+    <string name="barang_yang_sudah_dibeli">Barang yang sudah dibeli tidak dapat ditukar atau dikembalikan.</string>
+    <string name="bagikan">Bagikan</string>
+    <string name="cetak">Cetak</string>
+    <string name="transaksi_baru">Transaksi Baru</string>
+    <string name="cabang_nota">Cabang:</string>
+    <string name="gagal_membagikan_nota">Gagal membagikan nota:</string>
+    <string name="gagal_mencetak">Gagal mencetak:</string>
+    <string name="uang_tunai_tidak_cukup">Uang tunai tidak cukup!</string>
+    <string name="memproses">Memproses...</string>
+    <string name="proses_pembayaran">PROSES PEMBAYARAN</string>
+    <string name="gagal_menyimpan">Gagal menyimpan:</string>
 </resources>

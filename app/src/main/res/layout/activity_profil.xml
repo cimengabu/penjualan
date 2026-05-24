@@ -73,24 +73,14 @@
                         android:id="@+id/ivAvatarProfil"
                         android:layout_width="88dp"
                         android:layout_height="88dp"
-                        android:src="@drawable/profile"
-                        app:tint="@color/colorOnPrimary"
-                        android:scaleType="centerCrop"
-                        android:clickable="true"
-                        android:focusable="true"
+                        android:src="@drawable/ic_logo_brown"
+                        android:scaleType="centerInside"
+                        android:padding="16dp"
+                        android:clickable="false"
+                        android:focusable="false"
                         android:background="@drawable/bg_circle_avatar"
-                        android:contentDescription="Ubah foto profil" />
+                        android:contentDescription="Logo Toko" />
 
-                    <!-- Camera badge -->
-                    <ImageView
-                        android:layout_width="26dp"
-                        android:layout_height="26dp"
-                        android:layout_gravity="bottom|end"
-                        android:src="@android:drawable/ic_menu_camera"
-                        android:background="@color/colorPrimary"
-                        android:padding="4dp"
-                        app:tint="@color/white"
-                        android:contentDescription="Ganti foto" />
                 </FrameLayout>
             </LinearLayout>
         </FrameLayout>

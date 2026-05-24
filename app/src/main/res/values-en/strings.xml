@@ -94,4 +94,33 @@
     <string name="harga_jual">Selling Price</string>
     <string name="pengaturan">Settings</string>
     <string name="pencarian">Search...</string>
+
+    <string name="nota_pembayaran">PAYMENT RECEIPT</string>
+    <string name="no_nota">Receipt No :</string>
+    <string name="waktu">Time :</string>
+    <string name="kasir">Cashier :</string>
+    <string name="pelanggan_nota">Customer :</string>
+    <string name="item">ITEM</string>
+    <string name="qty">QTY</string>
+    <string name="harga">PRICE</string>
+    <string name="jumlah_nota">AMOUNT</string>
+    <string name="subtotal">Subtotal :</string>
+    <string name="diskon">Discount :</string>
+    <string name="pajak">Tax :</string>
+    <string name="total_nota">TOTAL</string>
+    <string name="metode_bayar">Payment Method :</string>
+    <string name="dibayar">Paid :</string>
+    <string name="kembalian">Change :</string>
+    <string name="terima_kasih">Thank You!</string>
+    <string name="barang_yang_sudah_dibeli">Items purchased cannot be exchanged or returned.</string>
+    <string name="bagikan">Share</string>
+    <string name="cetak">Print</string>
+    <string name="transaksi_baru">New Transaction</string>
+    <string name="cabang_nota">Branch:</string>
+    <string name="gagal_membagikan_nota">Failed to share receipt:</string>
+    <string name="gagal_mencetak">Failed to print:</string>
+    <string name="uang_tunai_tidak_cukup">Not enough cash!</string>
+    <string name="memproses">Processing...</string>
+    <string name="proses_pembayaran">PROCESS PAYMENT</string>
+    <string name="gagal_menyimpan">Failed to save:</string>
 </resources>

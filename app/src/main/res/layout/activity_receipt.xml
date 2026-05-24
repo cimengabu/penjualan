@@ -75,11 +75,21 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="★  LUMINA POS  ★"
-                        android:textStyle="bold"
+                        android:text="@string/nota_pembayaran"
                         android:textColor="#3E2723"
                         android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:gravity="center"
                         android:letterSpacing="0.1"/>
+
+                    <TextView
+                        android:id="@+id/tvCabangNota"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Cabang: -"
+                        android:textColor="#795548"
+                        android:textSize="11sp"
+                        android:gravity="center"/>
 
                     <TextView
                         android:id="@+id/tvAlamatToko"
@@ -113,7 +123,7 @@
                 <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
                     android:orientation="horizontal">
                     <TextView android:layout_width="80dp" android:layout_height="wrap_content"
-                        android:text="No. Nota" android:textColor="#757575" android:textSize="11sp"/>
+                        android:text="@string/no_nota" android:textColor="#757575" android:textSize="11sp"/>
                     <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
                         android:text=" : " android:textColor="#757575" android:textSize="11sp"/>
                     <TextView android:id="@+id/tvNotaInvoice" android:layout_width="0dp"
@@ -124,7 +134,7 @@
                 <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
                     android:layout_marginTop="4dp" android:orientation="horizontal">
                     <TextView android:layout_width="80dp" android:layout_height="wrap_content"
-                        android:text="Tanggal" android:textColor="#757575" android:textSize="11sp"/>
+                        android:text="@string/tanggal" android:textColor="#757575" android:textSize="11sp"/>
                     <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
                         android:text=" : " android:textColor="#757575" android:textSize="11sp"/>
                     <TextView android:id="@+id/tvTanggalNota" android:layout_width="0dp"
@@ -135,7 +145,7 @@
                 <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
                     android:layout_marginTop="4dp" android:orientation="horizontal">
                     <TextView android:layout_width="80dp" android:layout_height="wrap_content"
-                        android:text="Waktu" android:textColor="#757575" android:textSize="11sp"/>
+                        android:text="@string/waktu" android:textColor="#757575" android:textSize="11sp"/>
                     <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
                         android:text=" : " android:textColor="#757575" android:textSize="11sp"/>
                     <TextView android:id="@+id/tvWaktuNota" android:layout_width="0dp"
@@ -146,7 +156,7 @@
                 <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
                     android:layout_marginTop="4dp" android:orientation="horizontal">
                     <TextView android:layout_width="80dp" android:layout_height="wrap_content"
-                        android:text="Kasir" android:textColor="#757575" android:textSize="11sp"/>
+                        android:text="@string/kasir" android:textColor="#757575" android:textSize="11sp"/>
                     <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
                         android:text=" : " android:textColor="#757575" android:textSize="11sp"/>
                     <TextView android:id="@+id/tvKasirNota" android:layout_width="0dp"
@@ -157,7 +167,7 @@
                 <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
                     android:layout_marginTop="4dp" android:orientation="horizontal">
                     <TextView android:layout_width="80dp" android:layout_height="wrap_content"
-                        android:text="Pelanggan" android:textColor="#757575" android:textSize="11sp"/>
+                        android:text="@string/pelanggan" android:textColor="#757575" android:textSize="11sp"/>
                     <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
                         android:text=" : " android:textColor="#757575" android:textSize="11sp"/>
                     <TextView android:id="@+id/tvPelangganNota" android:layout_width="0dp"
@@ -176,20 +186,47 @@
                     android:gravity="center"/>
 
                 <!-- Header tabel item -->
-                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-                    <TextView android:layout_width="0dp" android:layout_height="wrap_content"
-                        android:layout_weight="3" android:text="ITEM"
-                        android:textStyle="bold" android:textColor="#3E2723" android:textSize="11sp"/>
-                    <TextView android:layout_width="0dp" android:layout_height="wrap_content"
-                        android:layout_weight="1" android:text="QTY" android:gravity="center"
-                        android:textStyle="bold" android:textColor="#3E2723" android:textSize="11sp"/>
-                    <TextView android:layout_width="0dp" android:layout_height="wrap_content"
-                        android:layout_weight="2" android:text="HARGA" android:gravity="end"
-                        android:textStyle="bold" android:textColor="#3E2723" android:textSize="11sp"/>
-                    <TextView android:layout_width="0dp" android:layout_height="wrap_content"
-                        android:layout_weight="2" android:text="JUMLAH" android:gravity="end"
-                        android:textStyle="bold" android:textColor="#3E2723" android:textSize="11sp"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingBottom="8dp"
+                    android:weightSum="8">
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="3"
+                        android:text="@string/item"
+                        android:textSize="12sp"
+                        android:textStyle="bold"
+                        android:textColor="#3E2723"/>
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/qty"
+                        android:textSize="12sp"
+                        android:textStyle="bold"
+                        android:gravity="center"
+                        android:textColor="#3E2723"/>
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:text="@string/harga"
+                        android:textSize="12sp"
+                        android:textStyle="bold"
+                        android:gravity="end"
+                        android:textColor="#3E2723"/>
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:text="@string/jumlah_nota"
+                        android:textSize="12sp"
+                        android:textStyle="bold"
+                        android:gravity="end"
+                        android:textColor="#3E2723"/>
                 </LinearLayout>
 
                 <View android:layout_width="match_parent" android:layout_height="1dp"
@@ -210,7 +247,7 @@
                 <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
                     android:layout_marginTop="8dp" android:orientation="horizontal">
                     <TextView android:layout_width="0dp" android:layout_height="wrap_content"
-                        android:layout_weight="1" android:text="Subtotal"
+                        android:layout_weight="1" android:text="@string/subtotal"
                         android:textColor="#757575" android:textSize="12sp"/>
                     <TextView android:id="@+id/tvSubtotalNota" android:layout_width="wrap_content"
                         android:layout_height="wrap_content" android:text="Rp 0"
@@ -220,7 +257,7 @@
                 <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
                     android:layout_marginTop="2dp" android:orientation="horizontal">
                     <TextView android:layout_width="0dp" android:layout_height="wrap_content"
-                        android:layout_weight="1" android:text="Diskon"
+                        android:layout_weight="1" android:text="@string/diskon"
                         android:textColor="#757575" android:textSize="12sp"/>
                     <TextView android:id="@+id/tvDiskonNota" android:layout_width="wrap_content"
                         android:layout_height="wrap_content" android:text="- Rp 0"
@@ -230,7 +267,7 @@
                 <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
                     android:layout_marginTop="2dp" android:orientation="horizontal">
                     <TextView android:layout_width="0dp" android:layout_height="wrap_content"
-                        android:layout_weight="1" android:text="Pajak"
+                        android:layout_weight="1" android:text="@string/pajak"
                         android:textColor="#757575" android:textSize="12sp"/>
                     <TextView android:id="@+id/tvPajakNota" android:layout_width="wrap_content"
                         android:layout_height="wrap_content" android:text="Rp 0"
@@ -244,7 +281,7 @@
                 <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
                     android:layout_marginTop="8dp" android:orientation="horizontal">
                     <TextView android:layout_width="0dp" android:layout_height="wrap_content"
-                        android:layout_weight="1" android:text="TOTAL"
+                        android:layout_weight="1" android:text="@string/total_nota"
                         android:textStyle="bold" android:textColor="#3E2723" android:textSize="14sp"/>
                     <TextView android:id="@+id/tvTotalNota" android:layout_width="wrap_content"
                         android:layout_height="wrap_content" android:text="Rp 0"
@@ -265,7 +302,7 @@
                         <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
                             android:orientation="horizontal">
                             <TextView android:layout_width="0dp" android:layout_height="wrap_content"
-                                android:layout_weight="1" android:text="Metode Bayar"
+                                android:layout_weight="1" android:text="@string/metode_bayar"
                                 android:textColor="#795548" android:textSize="12sp"/>
                             <TextView android:id="@+id/tvMetodeNota" android:layout_width="wrap_content"
                                 android:layout_height="wrap_content" android:text="-"
@@ -275,7 +312,7 @@
                         <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
                             android:layout_marginTop="4dp" android:orientation="horizontal">
                             <TextView android:layout_width="0dp" android:layout_height="wrap_content"
-                                android:layout_weight="1" android:text="Dibayar"
+                                android:layout_weight="1" android:text="@string/dibayar"
                                 android:textColor="#795548" android:textSize="12sp"/>
                             <TextView android:id="@+id/tvDibayarNota" android:layout_width="wrap_content"
                                 android:layout_height="wrap_content" android:text="Rp 0"
@@ -285,7 +322,7 @@
                         <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
                             android:layout_marginTop="4dp" android:orientation="horizontal">
                             <TextView android:layout_width="0dp" android:layout_height="wrap_content"
-                                android:layout_weight="1" android:text="Kembalian"
+                                android:layout_weight="1" android:text="@string/kembalian"
                                 android:textColor="#795548" android:textSize="12sp"/>
                             <TextView android:id="@+id/tvKembalianNota" android:layout_width="wrap_content"
                                 android:layout_height="wrap_content" android:text="Rp 0"
@@ -309,9 +346,18 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:text="Terima kasih telah berbelanja!\nSimpan struk ini sebagai bukti pembayaran."
+                    android:text="@string/terima_kasih"
                     android:textColor="#795548"
                     android:textSize="11sp"
+                    android:gravity="center"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="@string/barang_yang_sudah_dibeli"
+                    android:textColor="#9E9E9E"
+                    android:textSize="10sp"
                     android:gravity="center"/>
 
                 <TextView
@@ -339,7 +385,7 @@
                 android:layout_height="56dp"
                 android:layout_weight="1"
                 android:layout_marginEnd="8dp"
-                android:text="📤 Bagikan"
+                android:text="@string/bagikan"
                 android:textStyle="bold"
                 app:cornerRadius="14dp"
                 app:backgroundTint="#795548"
@@ -351,7 +397,7 @@
                 android:layout_height="56dp"
                 android:layout_weight="1"
                 android:layout_marginStart="8dp"
-                android:text="🖨️ Cetak"
+                android:text="@string/cetak"
                 android:textStyle="bold"
                 app:cornerRadius="14dp"
                 app:backgroundTint="@color/colorPrimary"
@@ -364,7 +410,7 @@
             android:layout_height="56dp"
             android:layout_marginHorizontal="16dp"
             android:layout_marginBottom="16dp"
-            android:text="🛒 Transaksi Baru"
+            android:text="@string/transaksi_baru"
             android:textStyle="bold"
             app:cornerRadius="14dp"
             app:backgroundTint="@color/colorSecondary"

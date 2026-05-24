@@ -258,7 +258,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
                     android:orientation="horizontal"
-                    android:weightSum="2">
+                    android:weightSum="3">
 
                     <!-- Transaksi -->
                     <LinearLayout
@@ -320,6 +320,43 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="6dp"
                             android:text="@string/laporan"
+                            android:textColor="@color/colorOnSurface"
+                            android:textStyle="bold"
+                            android:textSize="12sp"
+                            android:gravity="center"/>
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginVertical="8dp"
+                        android:background="@color/colorDivider"/>
+
+                    <!-- Pelanggan -->
+                    <LinearLayout
+                        android:id="@+id/llPelanggan"
+                        android:layout_width="0dp"
+                        android:layout_height="80dp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:foreground="?android:attr/selectableItemBackground">
+
+                        <ImageView
+                            android:id="@+id/ivPelanggan"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:src="@drawable/ic_pelanggan"
+                            app:tint="@color/colorPrimaryVariant"/>
+
+                        <TextView
+                            android:id="@+id/tvPelanggan"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="6dp"
+                            android:text="Pelanggan"
                             android:textColor="@color/colorOnSurface"
                             android:textStyle="bold"
                             android:textSize="12sp"
@@ -519,61 +556,7 @@
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
-            <!-- Pelanggan (NEW) -->
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/cardPelanggan"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_columnWeight="1"
-                android:layout_margin="6dp"
-                app:cardCornerRadius="20dp"
-                app:cardElevation="3dp"
-                app:cardBackgroundColor="@color/colorSurface"
-                android:clickable="true"
-                android:focusable="true"
-                android:foreground="?android:attr/selectableItemBackground">
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="100dp"
-                    android:gravity="center"
-                    android:orientation="vertical">
-                    <ImageView android:layout_width="34dp"
-                        android:layout_height="34dp" android:src="@drawable/ic_pelanggan"
-                        app:tint="@color/colorPrimaryVariant"/>
-                    <TextView android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" android:layout_marginTop="6dp"
-                        android:text="Pelanggan" android:textColor="@color/colorOnSurface"
-                        android:textSize="11sp" android:textStyle="bold"/>
-                </LinearLayout>
-            </com.google.android.material.card.MaterialCardView>
 
-            <!-- Transaksi Riwayat -->
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/cardRiwayatTrx"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_columnWeight="1"
-                android:layout_margin="6dp"
-                app:cardCornerRadius="20dp"
-                app:cardElevation="3dp"
-                app:cardBackgroundColor="@color/colorSurface"
-                android:clickable="true"
-                android:focusable="true"
-                android:foreground="?android:attr/selectableItemBackground">
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="100dp"
-                    android:gravity="center"
-                    android:orientation="vertical">
-                    <ImageView android:layout_width="34dp"
-                        android:layout_height="34dp" android:src="@drawable/resume"
-                        app:tint="@color/colorSecondary"/>
-                    <TextView android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" android:layout_marginTop="6dp"
-                        android:text="Riwayat Trx" android:textColor="@color/colorOnSurface"
-                        android:textSize="11sp" android:textStyle="bold"/>
-                </LinearLayout>
-            </com.google.android.material.card.MaterialCardView>
 
         </GridLayout>
 

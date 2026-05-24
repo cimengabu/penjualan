@@ -46,6 +46,8 @@
                 android:layout_height="wrap_content"
                 android:text="@string/mode_gelap_night_mode"
                 android:textColor="@color/colorOnBackground"
+                app:thumbTint="@color/colorPrimary"
+                app:trackTint="@color/colorDivider"
                 android:layout_marginBottom="24dp" />
 
             <!-- Bahasa -->
