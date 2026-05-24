@@ -10,19 +10,16 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.penjualan.R
 import com.example.penjualan.model.ModelTransaksi
 import com.example.penjualan.transaksi.TransaksiAdapter
+import com.example.penjualan.FirebaseUtils
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import java.text.NumberFormat
 import java.util.Locale
 
 class LaporanActivity : AppCompatActivity() {
 
-    private val database = FirebaseDatabase.getInstance(
-        "https://penjualan-indah-default-rtdb.asia-southeast1.firebasedatabase.app/"
-    )
-    private val transaksiRef = database.getReference("transaksi")
+    private val transaksiRef = FirebaseUtils.getRef("transaksi")
 
     private lateinit var btnBack: ImageView
     private lateinit var rvLaporan: RecyclerView

@@ -1,0 +1,374 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_gradient_full_brown">
+
+    <LinearLayout
+        android:id="@+id/receiptContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingBottom="100dp">
+
+        <!-- Header sukses -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_gradient_brown"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:paddingVertical="28dp"
+            android:paddingHorizontal="20dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="✅"
+                android:textSize="48sp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Pembayaran Berhasil!"
+                android:textColor="@color/colorOnPrimary"
+                android:textSize="22sp"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/tvNomorNota"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="INV-20241201-120000"
+                android:textColor="#CCFFFFFF"
+                android:textSize="13sp"/>
+        </LinearLayout>
+
+        <!-- Nota / Struk Kasir -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardNota"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="8dp"
+            app:cardBackgroundColor="@android:color/white">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingHorizontal="20dp"
+                android:paddingVertical="16dp">
+
+                <!-- Kop Toko -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="★  LUMINA POS  ★"
+                        android:textStyle="bold"
+                        android:textColor="#3E2723"
+                        android:textSize="18sp"
+                        android:letterSpacing="0.1"/>
+
+                    <TextView
+                        android:id="@+id/tvAlamatToko"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Jl. Contoh No. 1, Kota"
+                        android:textColor="#795548"
+                        android:textSize="11sp"
+                        android:gravity="center"/>
+
+                    <TextView
+                        android:id="@+id/tvTelpToko"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Telp: -"
+                        android:textColor="#795548"
+                        android:textSize="11sp"/>
+                </LinearLayout>
+
+                <!-- Garis pembatas 1 -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="10dp"
+                    android:text="- - - - - - - - - - - - - - - - - - - - - - - -"
+                    android:textColor="#BDBDBD"
+                    android:textSize="11sp"
+                    android:gravity="center"/>
+
+                <!-- Info transaksi -->
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView android:layout_width="80dp" android:layout_height="wrap_content"
+                        android:text="No. Nota" android:textColor="#757575" android:textSize="11sp"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text=" : " android:textColor="#757575" android:textSize="11sp"/>
+                    <TextView android:id="@+id/tvNotaInvoice" android:layout_width="0dp"
+                        android:layout_height="wrap_content" android:layout_weight="1"
+                        android:text="-" android:textColor="#212121" android:textSize="11sp" android:textStyle="bold"/>
+                </LinearLayout>
+
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp" android:orientation="horizontal">
+                    <TextView android:layout_width="80dp" android:layout_height="wrap_content"
+                        android:text="Tanggal" android:textColor="#757575" android:textSize="11sp"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text=" : " android:textColor="#757575" android:textSize="11sp"/>
+                    <TextView android:id="@+id/tvTanggalNota" android:layout_width="0dp"
+                        android:layout_height="wrap_content" android:layout_weight="1"
+                        android:text="-" android:textColor="#212121" android:textSize="11sp"/>
+                </LinearLayout>
+
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp" android:orientation="horizontal">
+                    <TextView android:layout_width="80dp" android:layout_height="wrap_content"
+                        android:text="Waktu" android:textColor="#757575" android:textSize="11sp"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text=" : " android:textColor="#757575" android:textSize="11sp"/>
+                    <TextView android:id="@+id/tvWaktuNota" android:layout_width="0dp"
+                        android:layout_height="wrap_content" android:layout_weight="1"
+                        android:text="-" android:textColor="#212121" android:textSize="11sp"/>
+                </LinearLayout>
+
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp" android:orientation="horizontal">
+                    <TextView android:layout_width="80dp" android:layout_height="wrap_content"
+                        android:text="Kasir" android:textColor="#757575" android:textSize="11sp"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text=" : " android:textColor="#757575" android:textSize="11sp"/>
+                    <TextView android:id="@+id/tvKasirNota" android:layout_width="0dp"
+                        android:layout_height="wrap_content" android:layout_weight="1"
+                        android:text="-" android:textColor="#212121" android:textSize="11sp"/>
+                </LinearLayout>
+
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp" android:orientation="horizontal">
+                    <TextView android:layout_width="80dp" android:layout_height="wrap_content"
+                        android:text="Pelanggan" android:textColor="#757575" android:textSize="11sp"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text=" : " android:textColor="#757575" android:textSize="11sp"/>
+                    <TextView android:id="@+id/tvPelangganNota" android:layout_width="0dp"
+                        android:layout_height="wrap_content" android:layout_weight="1"
+                        android:text="-" android:textColor="#212121" android:textSize="11sp"/>
+                </LinearLayout>
+
+                <!-- Garis pembatas 2 -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="10dp"
+                    android:text="- - - - - - - - - - - - - - - - - - - - - - - -"
+                    android:textColor="#BDBDBD"
+                    android:textSize="11sp"
+                    android:gravity="center"/>
+
+                <!-- Header tabel item -->
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView android:layout_width="0dp" android:layout_height="wrap_content"
+                        android:layout_weight="3" android:text="ITEM"
+                        android:textStyle="bold" android:textColor="#3E2723" android:textSize="11sp"/>
+                    <TextView android:layout_width="0dp" android:layout_height="wrap_content"
+                        android:layout_weight="1" android:text="QTY" android:gravity="center"
+                        android:textStyle="bold" android:textColor="#3E2723" android:textSize="11sp"/>
+                    <TextView android:layout_width="0dp" android:layout_height="wrap_content"
+                        android:layout_weight="2" android:text="HARGA" android:gravity="end"
+                        android:textStyle="bold" android:textColor="#3E2723" android:textSize="11sp"/>
+                    <TextView android:layout_width="0dp" android:layout_height="wrap_content"
+                        android:layout_weight="2" android:text="JUMLAH" android:gravity="end"
+                        android:textStyle="bold" android:textColor="#3E2723" android:textSize="11sp"/>
+                </LinearLayout>
+
+                <View android:layout_width="match_parent" android:layout_height="1dp"
+                    android:layout_marginTop="4dp" android:background="#3E2723"/>
+
+                <!-- Item List -->
+                <LinearLayout
+                    android:id="@+id/llItemsNota"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginTop="4dp"/>
+
+                <View android:layout_width="match_parent" android:layout_height="1dp"
+                    android:layout_marginTop="8dp" android:background="#BDBDBD"/>
+
+                <!-- Subtotal, Diskon, Pajak, Total -->
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp" android:orientation="horizontal">
+                    <TextView android:layout_width="0dp" android:layout_height="wrap_content"
+                        android:layout_weight="1" android:text="Subtotal"
+                        android:textColor="#757575" android:textSize="12sp"/>
+                    <TextView android:id="@+id/tvSubtotalNota" android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" android:text="Rp 0"
+                        android:textColor="#212121" android:textSize="12sp"/>
+                </LinearLayout>
+
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp" android:orientation="horizontal">
+                    <TextView android:layout_width="0dp" android:layout_height="wrap_content"
+                        android:layout_weight="1" android:text="Diskon"
+                        android:textColor="#757575" android:textSize="12sp"/>
+                    <TextView android:id="@+id/tvDiskonNota" android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" android:text="- Rp 0"
+                        android:textColor="#4CAF50" android:textSize="12sp"/>
+                </LinearLayout>
+
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp" android:orientation="horizontal">
+                    <TextView android:layout_width="0dp" android:layout_height="wrap_content"
+                        android:layout_weight="1" android:text="Pajak"
+                        android:textColor="#757575" android:textSize="12sp"/>
+                    <TextView android:id="@+id/tvPajakNota" android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" android:text="Rp 0"
+                        android:textColor="#212121" android:textSize="12sp"/>
+                </LinearLayout>
+
+                <!-- Garis total -->
+                <View android:layout_width="match_parent" android:layout_height="1dp"
+                    android:layout_marginTop="8dp" android:background="#3E2723"/>
+
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp" android:orientation="horizontal">
+                    <TextView android:layout_width="0dp" android:layout_height="wrap_content"
+                        android:layout_weight="1" android:text="TOTAL"
+                        android:textStyle="bold" android:textColor="#3E2723" android:textSize="14sp"/>
+                    <TextView android:id="@+id/tvTotalNota" android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" android:text="Rp 0"
+                        android:textStyle="bold" android:textColor="#3E2723" android:textSize="14sp"/>
+                </LinearLayout>
+
+                <!-- Pembayaran & Kembalian -->
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    app:cardCornerRadius="10dp"
+                    app:cardBackgroundColor="#FFF8E1">
+
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:orientation="vertical" android:padding="10dp">
+
+                        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+                            <TextView android:layout_width="0dp" android:layout_height="wrap_content"
+                                android:layout_weight="1" android:text="Metode Bayar"
+                                android:textColor="#795548" android:textSize="12sp"/>
+                            <TextView android:id="@+id/tvMetodeNota" android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" android:text="-"
+                                android:textStyle="bold" android:textColor="#3E2723" android:textSize="12sp"/>
+                        </LinearLayout>
+
+                        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp" android:orientation="horizontal">
+                            <TextView android:layout_width="0dp" android:layout_height="wrap_content"
+                                android:layout_weight="1" android:text="Dibayar"
+                                android:textColor="#795548" android:textSize="12sp"/>
+                            <TextView android:id="@+id/tvDibayarNota" android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" android:text="Rp 0"
+                                android:textStyle="bold" android:textColor="#3E2723" android:textSize="12sp"/>
+                        </LinearLayout>
+
+                        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp" android:orientation="horizontal">
+                            <TextView android:layout_width="0dp" android:layout_height="wrap_content"
+                                android:layout_weight="1" android:text="Kembalian"
+                                android:textColor="#795548" android:textSize="12sp"/>
+                            <TextView android:id="@+id/tvKembalianNota" android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" android:text="Rp 0"
+                                android:textStyle="bold" android:textColor="#2E7D32" android:textSize="14sp"/>
+                        </LinearLayout>
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <!-- Garis pembatas penutup -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="- - - - - - - - - - - - - - - - - - - - - - - -"
+                    android:textColor="#BDBDBD"
+                    android:textSize="11sp"
+                    android:gravity="center"/>
+
+                <!-- Footer nota -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="Terima kasih telah berbelanja!\nSimpan struk ini sebagai bukti pembayaran."
+                    android:textColor="#795548"
+                    android:textSize="11sp"
+                    android:gravity="center"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="★★★★★"
+                    android:textColor="#FF8F00"
+                    android:textSize="16sp"
+                    android:gravity="center"/>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Tombol Aksi -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingHorizontal="16dp"
+            android:paddingBottom="16dp">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnShareNota"
+                android:layout_width="0dp"
+                android:layout_height="56dp"
+                android:layout_weight="1"
+                android:layout_marginEnd="8dp"
+                android:text="📤 Bagikan"
+                android:textStyle="bold"
+                app:cornerRadius="14dp"
+                app:backgroundTint="#795548"
+                android:textColor="@android:color/white"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnPrintNota"
+                android:layout_width="0dp"
+                android:layout_height="56dp"
+                android:layout_weight="1"
+                android:layout_marginStart="8dp"
+                android:text="🖨️ Cetak"
+                android:textStyle="bold"
+                app:cornerRadius="14dp"
+                app:backgroundTint="@color/colorPrimary"
+                android:textColor="@color/colorOnPrimary"/>
+        </LinearLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnTransaksiBaruNota"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginBottom="16dp"
+            android:text="🛒 Transaksi Baru"
+            android:textStyle="bold"
+            app:cornerRadius="14dp"
+            app:backgroundTint="@color/colorSecondary"
+            android:textColor="@android:color/white"/>
+
+    </LinearLayout>
+</ScrollView>

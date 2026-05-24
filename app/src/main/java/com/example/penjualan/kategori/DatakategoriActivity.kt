@@ -11,6 +11,7 @@ import androidx.appcompat.widget.SearchView
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.penjualan.FirebaseUtils
 import com.example.penjualan.R
 import com.example.penjualan.model.ModelKategori
 import com.example.penjualan.viewmodel.DataKategoriViewModel
@@ -111,10 +112,7 @@ class DatakategoriActivity : AppCompatActivity() {
             .setMessage("Apakah Anda yakin ingin menghapus kategori \"${category.namaKategori}\"?")
             .setPositiveButton("Hapus") { _, _ ->
                 val categoryId = category.idKategori ?: return@setPositiveButton
-                val database = FirebaseDatabase.getInstance(
-                    "https://penjualan-indah-default-rtdb.asia-southeast1.firebasedatabase.app/"
-                )
-                val categoryRef = database.getReference("kategori").child(categoryId)
+                val categoryRef = FirebaseUtils.getRef("kategori").child(categoryId)
                 categoryRef.removeValue()
                     .addOnSuccessListener {
                         Toast.makeText(this, "Kategori berhasil dihapus", Toast.LENGTH_SHORT).show()

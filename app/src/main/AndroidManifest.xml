@@ -5,35 +5,66 @@
     <application
         android:name=".PenjualanApplication"
         android:allowBackup="true"
-        android:label="Penjualan"
+        android:label="@string/app_name"
         android:icon="@mipmap/ic_launcher"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:theme="@style/Theme.Penjualan">
 
-        <activity android:name=".LoginActivity"
-            android:exported="true">
+        <!-- Login (Launcher) -->
+        <activity android:name=".LoginActivity" android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        
-        <activity android:name=".RegisterActivity" android:exported="false" />
 
-        <activity android:name=".MainActivity"
-            android:exported="false">
-        </activity>
-        
-        <activity android:name=".SettingsActivity" android:exported="false" />
+        <activity android:name=".RegisterActivity"  android:exported="false" />
+        <activity android:name=".MainActivity"      android:exported="false" />
+        <activity android:name=".SettingsActivity"  android:exported="false" />
 
+        <!-- Kategori -->
         <activity android:name=".kategori.DatakategoriActivity" android:exported="false" />
-        <activity android:name=".kategori.ModKategoriActivity" android:exported="false" />
+        <activity android:name=".kategori.ModKategoriActivity"  android:exported="false" />
+
+        <!-- Produk -->
         <activity android:name=".produk.ProdukActivity" android:exported="false" />
+
+        <!-- Pegawai -->
         <activity android:name=".pegawai.PegawaiActivity" android:exported="false" />
+
+        <!-- Cabang -->
         <activity android:name=".cabang.CabangActivity" android:exported="false" />
+
+        <!-- Transaksi -->
         <activity android:name=".transaksi.TransaksiActivity" android:exported="false" />
+
+        <!-- Laporan -->
         <activity android:name=".laporan.LaporanActivity" android:exported="false" />
+
+        <!-- Profil -->
         <activity android:name=".profil.ProfilActivity" android:exported="false" />
+
+        <!-- Cetak -->
         <activity android:name=".cetak.CetakActivity" android:exported="false" />
+
+        <!-- Pelanggan (NEW) -->
+        <activity android:name=".pelanggan.PelangganActivity" android:exported="false" />
+
+        <!-- POS System (NEW) -->
+        <activity android:name=".pos.PosActivity"      android:exported="false" />
+        <activity android:name=".pos.CheckoutActivity" android:exported="false" />
+        <activity android:name=".pos.ReceiptActivity"  android:exported="false" />
+
+        <!-- FileProvider for sharing receipt images -->
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths"/>
+        </provider>
+
     </application>
 </manifest>

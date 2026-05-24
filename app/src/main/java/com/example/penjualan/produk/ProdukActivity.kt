@@ -14,18 +14,15 @@ import com.example.penjualan.R
 import com.example.penjualan.model.Product
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.textfield.TextInputEditText
+import com.example.penjualan.FirebaseUtils
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 
 class ProdukActivity : AppCompatActivity() {
 
-    private val database = FirebaseDatabase.getInstance(
-        "https://penjualan-indah-default-rtdb.asia-southeast1.firebasedatabase.app/"
-    )
-    private val productsRef = database.getReference("produk")
-    private val categoriesRef = database.getReference("kategori")
+    private val productsRef = FirebaseUtils.getRef("produk")
+    private val categoriesRef = FirebaseUtils.getRef("kategori")
 
     private lateinit var btnBack: ImageView
     private lateinit var recyclerViewProducts: RecyclerView
@@ -43,6 +40,7 @@ class ProdukActivity : AppCompatActivity() {
         btnBack = findViewById(R.id.btnBack)
         recyclerViewProducts = findViewById(R.id.recyclerViewProducts)
         fabTambahProduk = findViewById(R.id.fabTambahProduk)
+        val etSearch = findViewById<android.widget.EditText>(R.id.etSearch)
 
         // Handle Back button
         btnBack.setOnClickListener {
@@ -56,6 +54,24 @@ class ProdukActivity : AppCompatActivity() {
         )
         recyclerViewProducts.layoutManager = LinearLayoutManager(this)
         recyclerViewProducts.adapter = adapter
+
+        // Search logic
+        etSearch.addTextChangedListener(object : android.text.TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                val keyword = s.toString().trim().lowercase()
+                if (keyword.isEmpty()) {
+                    adapter.updateData(productList)
+                } else {
+                    val filtered = productList.filter { 
+                        it.name?.lowercase()?.contains(keyword) == true || 
+                        it.category?.lowercase()?.contains(keyword) == true 
+                    }
+                    adapter.updateData(filtered)
+                }
+            }
+            override fun afterTextChanged(s: android.text.Editable?) {}
+        })
 
         // Fetch Data from Firebase
         fetchProducts()

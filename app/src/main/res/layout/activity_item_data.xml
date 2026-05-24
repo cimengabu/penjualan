@@ -13,7 +13,9 @@
     android:foreground="?android:attr/selectableItemBackground"
     app:cardCornerRadius="10dp"
     app:cardElevation="2dp"
-    app:strokeWidth="0dp">
+    app:cardBackgroundColor="@color/colorSurface"
+    app:strokeWidth="1dp"
+    app:strokeColor="@color/colorDivider">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -47,7 +49,8 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
-            android:text="Kategori"
+            android:text="@string/kategori"
+            android:textColor="@color/colorOnSurface"
             android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@id/iconCard"
@@ -59,10 +62,11 @@
             android:id="@+id/chipAdd"
             android:layout_width="wrap_content"
             android:layout_height="56dp"
-            android:text="Aktif"
+            android:text="@string/aktif"
             app:layout_constraintTop_toTopOf="@id/iconCard"
             app:layout_constraintBottom_toBottomOf="@id/iconCard"
             app:layout_constraintEnd_toEndOf="parent"
+            android:textColor="@color/colorOnSurface"
             android:textSize="14sp"
 
             app:chipIcon="@drawable/check"

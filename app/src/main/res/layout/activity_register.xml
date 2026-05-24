@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorBackground"
+    android:background="@drawable/bg_gradient_full_brown"
     android:fillViewport="true">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -17,7 +17,7 @@
             android:id="@+id/headerBg"
             android:layout_width="match_parent"
             android:layout_height="260dp"
-            android:background="@drawable/bg_gradient_pink"
+            android:background="@drawable/bg_gradient_brown"
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
@@ -25,7 +25,7 @@
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:layout_marginTop="48dp"
-            android:src="@drawable/ic_logo_pink"
+            android:src="@drawable/ic_logo_brown"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -35,7 +35,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="Buat Akun Baru"
+            android:text="@string/buat_akun_baru"
             android:textColor="@color/colorOnPrimary"
             android:textSize="26sp"
             android:textStyle="bold"
@@ -49,7 +49,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="Bergabunglah bersama kami"
+            android:text="@string/bergabunglah_bersama_kami"
             android:textColor="@color/colorOnPrimary"
             android:textSize="14sp"
             android:alpha="0.8"
@@ -83,11 +83,35 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Daftar Akun"
+                    android:text="@string/daftar_akun"
                     android:textSize="20sp"
                     android:textStyle="bold"
                     android:textColor="@color/colorPrimary"
                     android:layout_marginBottom="24dp" />
+
+                <!-- Name Input -->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tilName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:hint="@string/nama_lengkap"
+                    app:boxStrokeColor="@color/colorPrimary"
+                    app:hintTextColor="@color/colorPrimary"
+                    app:boxCornerRadiusTopStart="12dp"
+                    app:boxCornerRadiusTopEnd="12dp"
+                    app:boxCornerRadiusBottomStart="12dp"
+                    app:boxCornerRadiusBottomEnd="12dp">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textPersonName"
+                        android:textColor="@color/colorOnSurface"
+                        android:imeOptions="actionNext" />
+                </com.google.android.material.textfield.TextInputLayout>
 
                 <!-- Email Input -->
                 <com.google.android.material.textfield.TextInputLayout
@@ -95,7 +119,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    android:hint="Email"
+                    android:hint="@string/email"
                     app:boxStrokeColor="@color/colorPrimary"
                     app:hintTextColor="@color/colorPrimary"
                     app:boxCornerRadiusTopStart="12dp"
@@ -119,7 +143,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    android:hint="Password (min. 6 karakter)"
+                    android:hint="@string/password_min_6_karakter"
                     app:passwordToggleEnabled="true"
                     app:boxStrokeColor="@color/colorPrimary"
                     app:hintTextColor="@color/colorPrimary"
@@ -143,7 +167,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="56dp"
                     android:layout_marginTop="32dp"
-                    android:text="Daftar Sekarang"
+                    android:text="@string/daftar_sekarang"
                     android:textSize="16sp"
                     android:textStyle="bold"
                     android:letterSpacing="0.05"
@@ -163,7 +187,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="Sudah punya akun? Masuk di sini"
+                    android:text="@string/sudah_punya_akun_masuk_di_sini"
                     android:textColor="@color/colorPrimary"
                     android:textStyle="bold"
                     android:textSize="14sp"

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">penjualan</string>
+    <string name="app_name">Lumina POS</string>
 
     <string name="Selamat_Pagi">Selamat Pagi (%1$s)</string>
     <string name="Selamat_Siang">Selamat Siang (%1$s)</string>
@@ -23,4 +23,75 @@
         <item>Aktif</item>
         <item>Nonaktif</item>
     </string-array>
+    <string name="data_cabang">Data Cabang</string>
+    <string name="ringkasan_hari_ini">Ringkasan Hari Ini</string>
+    <string name="cetak_laporan">Cetak Laporan</string>
+    <string name="cetak_laporan_penjualan">Cetak Laporan Penjualan</string>
+    <string name="tekan_tombol_di_bawah_ini_untu">Tekan tombol di bawah ini untuk mencetak seluruh laporan transaksi Anda menggunakan layanan pencetakan perangkat.</string>
+    <string name="cetak_sekarang">Cetak Sekarang</string>
+    <string name="data_kategori">Data Kategori</string>
+    <string name="aktif">Aktif</string>
+    <string name="laporan_penjualan">Laporan Penjualan</string>
+    <string name="total_pendapatan_rp_0">Total Pendapatan: Rp 0</string>
+    <string name="selamat_datang">Selamat Datang</string>
+    <string name="silakan_masuk_untuk_melanjutka">Silakan masuk untuk melanjutkan</string>
+    <string name="masuk_akun">Masuk Akun</string>
+    <string name="nama_anda">Nama Anda</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="masuk">Masuk</string>
+    <string name="belum_punya_akun_daftar_di_sin">Belum punya akun? Daftar di sini</string>
+    <string name="data_produk">Data Produk</string>
+    <string name="tambah_kategori">Tambah Kategori</string>
+    <string name="nama_kategori">Nama Kategori</string>
+    <string name="status">Status</string>
+    <string name="simpan">Simpan</string>
+    <string name="data_pegawai">Data Pegawai</string>
+    <string name="toko_anda">Toko Anda</string>
+    <string name="ketuk_avatar_atau_foto_latar_u">Ketuk avatar atau foto latar untuk mengubahnya</string>
+
+    <string name="informasi_toko">Informasi Toko</string>
+    <string name="nama_toko">Nama Toko</string>
+    <string name="alamat_toko">Alamat Toko</string>
+    <string name="no_telepon_toko">No. Telepon Toko</string>
+    <string name="email_toko">Email Toko</string>
+    <string name="website_media_sosial">Website / Media Sosial</string>
+    <string name="deskripsi_toko">Deskripsi Toko</string>
+    <string name="keluar_akun">Keluar Akun</string>
+    <string name="buat_akun_baru">Buat Akun Baru</string>
+    <string name="bergabunglah_bersama_kami">Bergabunglah bersama kami</string>
+    <string name="daftar_akun">Daftar Akun</string>
+    <string name="nama_lengkap">Nama Lengkap</string>
+    <string name="password_min_6_karakter">Password (min. 6 karakter)</string>
+    <string name="daftar_sekarang">Daftar Sekarang</string>
+    <string name="sudah_punya_akun_masuk_di_sini">Sudah punya akun? Masuk di sini</string>
+    <string name="tampilan_theme">Tampilan / Theme</string>
+    <string name="mode_gelap_night_mode">Mode Gelap (Night Mode)</string>
+    <string name="bahasa_language">Bahasa / Language</string>
+    <string name="bahasa_indonesia">Bahasa Indonesia</string>
+    <string name="english">English</string>
+    <string name="transaksi_kasir">Transaksi Kasir</string>
+    <string name="total_rp_0">Total: Rp 0</string>
+    <string name="nama_cabang">Nama Cabang</string>
+    <string name="alamat_cabang">Alamat Cabang</string>
+    <string name="no_telepon_cabang">No. Telepon Cabang</string>
+    <string name="nama_pegawai">Nama Pegawai</string>
+    <string name="jabatan">Jabatan</string>
+    <string name="no_handphone">No Handphone</string>
+    <string name="pilih_produk">Pilih Produk</string>
+    <string name="jumlah">Jumlah</string>
+    <string name="alamat">Alamat</string>
+    <string name="no_telepon">No. Telepon</string>
+    <string name="no_hp">No. HP</string>
+    <string name="nama_produk">Nama Produk</string>
+    <string name="kategori_elektronik">Kategori: Elektronik</string>
+    <string name="stok_12">Stok: 12</string>
+    <string name="rp_25_000">Rp 25.000</string>
+    <string name="jumlah_1">Jumlah: 1</string>
+    <string name="tanggal">Tanggal</string>
+    <string name="stok">Stok</string>
+    <string name="harga_beli">Harga Beli</string>
+    <string name="harga_jual">Harga Jual</string>
+    <string name="pengaturan">Pengaturan</string>
+    <string name="pencarian">Pencarian...</string>
 </resources>

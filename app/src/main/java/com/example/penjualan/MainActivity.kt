@@ -5,38 +5,51 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
+import com.example.penjualan.FirebaseUtils
 import com.example.penjualan.kategori.DatakategoriActivity
+import com.example.penjualan.pelanggan.PelangganActivity
+import com.example.penjualan.pos.PosActivity
 import com.example.penjualan.produk.ProdukActivity
+import com.google.android.material.button.MaterialButton
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import java.text.NumberFormat
+import java.text.SimpleDateFormat
 import java.util.Calendar
+import java.util.Date
 import java.util.Locale
 
 class MainActivity : AppCompatActivity() {
 
-    private val database = FirebaseDatabase.getInstance("https://penjualan-indah-default-rtdb.asia-southeast1.firebasedatabase.app/")
-    private val productsRef = database.getReference("produk")
-    private val transaksiRef = database.getReference("transaksi")
+    private val productsRef  = FirebaseUtils.getRef("produk")
+    private val transaksiRef = FirebaseUtils.getRef("transaksi")
+    private val pelangganRef = FirebaseUtils.getRef("pelanggan")
 
     private lateinit var tvGreeting: TextView
+    private lateinit var tvSubtitle: TextView
     private lateinit var cardProfil: CardView
     private lateinit var cardProduk: CardView
     private lateinit var cardKategori: CardView
     private lateinit var cardPegawai: CardView
     private lateinit var cardCabang: CardView
     private lateinit var cardMencetak: CardView
+    private lateinit var cardPelanggan: CardView
+    private lateinit var cardRiwayatTrx: CardView
 
     private lateinit var ivTransaksi: ImageView
     private lateinit var tvTransaksi: TextView
     private lateinit var ivLaporan: ImageView
     private lateinit var tvLaporan: TextView
     private lateinit var ivSettings: ImageView
+
+    private lateinit var tvTodayIncome: TextView
+    private lateinit var tvTodayTrx: TextView
+    private lateinit var tvTotalProduk: TextView
+    private lateinit var tvTotalPelanggan: TextView
+    private lateinit var btnKasirPOS: MaterialButton
 
     override fun attachBaseContext(newBase: Context) {
         super.attachBaseContext(LocaleHelper.onAttach(newBase))
@@ -46,93 +59,86 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_card)
 
-        // Bind Views
-        tvGreeting = findViewById(R.id.SelamatPagi)
-        cardProfil = findViewById(R.id.card2)
-        cardProduk = findViewById(R.id.card3)
-        cardKategori = findViewById(R.id.card4)
-        cardPegawai = findViewById(R.id.card5)
-        cardCabang = findViewById(R.id.card6)
-        cardMencetak = findViewById(R.id.card7)
+        tvGreeting       = findViewById(R.id.SelamatPagi)
+        tvSubtitle       = findViewById(R.id.Teks2)
+        cardProfil       = findViewById(R.id.card2)
+        cardProduk       = findViewById(R.id.card3)
+        cardKategori     = findViewById(R.id.card4)
+        cardPegawai      = findViewById(R.id.card5)
+        cardCabang       = findViewById(R.id.card6)
+        cardMencetak     = findViewById(R.id.card7)
+        cardPelanggan    = findViewById(R.id.cardPelanggan)
+        cardRiwayatTrx   = findViewById(R.id.cardRiwayatTrx)
 
-        ivTransaksi = findViewById(R.id.ivTransaksi)
-        tvTransaksi = findViewById(R.id.tvTransaksi)
-        ivLaporan = findViewById(R.id.ivLaporan)
-        tvLaporan = findViewById(R.id.tvLaporan)
-        ivSettings = findViewById(R.id.ivSettings)
+        ivTransaksi      = findViewById(R.id.ivTransaksi)
+        tvTransaksi      = findViewById(R.id.tvTransaksi)
+        ivLaporan        = findViewById(R.id.ivLaporan)
+        tvLaporan        = findViewById(R.id.tvLaporan)
+        ivSettings       = findViewById(R.id.ivSettings)
 
-        // Set Dynamic Greeting
+        tvTodayIncome    = findViewById(R.id.tvTodayIncome)
+        tvTodayTrx       = findViewById(R.id.tvTodayTrx)
+        tvTotalProduk    = findViewById(R.id.tvTotalProduk)
+        tvTotalPelanggan = findViewById(R.id.tvTotalPelanggan)
+        btnKasirPOS      = findViewById(R.id.btnKasirPOS)
+
         setGreetingMessage()
 
-        // Setup Main Actions
-        cardKategori.setOnClickListener {
-            val intent = Intent(this, DatakategoriActivity::class.java)
-            startActivity(intent)
-        }
+        // --- Navigations ---
+        btnKasirPOS.setOnClickListener      { startActivity(Intent(this, PosActivity::class.java)) }
+        cardKategori.setOnClickListener     { startActivity(Intent(this, DatakategoriActivity::class.java)) }
+        cardProduk.setOnClickListener       { startActivity(Intent(this, ProdukActivity::class.java)) }
+        cardPelanggan.setOnClickListener    { startActivity(Intent(this, PelangganActivity::class.java)) }
+        ivSettings.setOnClickListener       { startActivity(Intent(this, SettingsActivity::class.java)) }
+        cardProfil.setOnClickListener       { startActivity(Intent(this, com.example.penjualan.profil.ProfilActivity::class.java)) }
+        cardPegawai.setOnClickListener      { startActivity(Intent(this, com.example.penjualan.pegawai.PegawaiActivity::class.java)) }
+        cardCabang.setOnClickListener       { startActivity(Intent(this, com.example.penjualan.cabang.CabangActivity::class.java)) }
+        cardMencetak.setOnClickListener     { startActivity(Intent(this, com.example.penjualan.cetak.CetakActivity::class.java)) }
+        cardRiwayatTrx.setOnClickListener   { startActivity(Intent(this, com.example.penjualan.transaksi.TransaksiActivity::class.java)) }
+        ivTransaksi.setOnClickListener      { startActivity(Intent(this, com.example.penjualan.transaksi.TransaksiActivity::class.java)) }
+        tvTransaksi.setOnClickListener      { startActivity(Intent(this, com.example.penjualan.transaksi.TransaksiActivity::class.java)) }
+        ivLaporan.setOnClickListener        { startActivity(Intent(this, com.example.penjualan.laporan.LaporanActivity::class.java)) }
+        tvLaporan.setOnClickListener        { startActivity(Intent(this, com.example.penjualan.laporan.LaporanActivity::class.java)) }
 
-        cardProduk.setOnClickListener {
-            val intent = Intent(this, ProdukActivity::class.java)
-            startActivity(intent)
-        }
-        
-        ivSettings.setOnClickListener {
-            startActivity(Intent(this, SettingsActivity::class.java))
-        }
-
-        // Setup Placeholder Actions
-        cardProfil.setOnClickListener { 
-            startActivity(Intent(this, com.example.penjualan.profil.ProfilActivity::class.java)) 
-        }
-        cardPegawai.setOnClickListener { 
-            startActivity(Intent(this, com.example.penjualan.pegawai.PegawaiActivity::class.java)) 
-        }
-        cardCabang.setOnClickListener { 
-            startActivity(Intent(this, com.example.penjualan.cabang.CabangActivity::class.java)) 
-        }
-        cardMencetak.setOnClickListener { 
-            startActivity(Intent(this, com.example.penjualan.cetak.CetakActivity::class.java)) 
-        }
-
-        ivTransaksi.setOnClickListener { 
-            startActivity(Intent(this, com.example.penjualan.transaksi.TransaksiActivity::class.java)) 
-        }
-        tvTransaksi.setOnClickListener { 
-            startActivity(Intent(this, com.example.penjualan.transaksi.TransaksiActivity::class.java)) 
-        }
-        ivLaporan.setOnClickListener { 
-            startActivity(Intent(this, com.example.penjualan.laporan.LaporanActivity::class.java)) 
-        }
-        tvLaporan.setOnClickListener { 
-            startActivity(Intent(this, com.example.penjualan.laporan.LaporanActivity::class.java)) 
-        }
-
-        // Fetch Dashboard Analytics
         fetchAnalyticsData()
     }
 
     private fun fetchAnalyticsData() {
-        // Fetch Total Products
+        val todayStr = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(Date())
+        val fmt = NumberFormat.getCurrencyInstance(Locale("in", "ID"))
+
         productsRef.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-                val count = snapshot.childrenCount
-                tvLaporan.text = "$count Produk"
+                tvTotalProduk.text = snapshot.childrenCount.toString()
+                tvLaporan.text = "${snapshot.childrenCount} Produk"
             }
             override fun onCancelled(error: DatabaseError) {}
         })
 
-        // Fetch Total Transactions & Income
+        pelangganRef.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                tvTotalPelanggan.text = snapshot.childrenCount.toString()
+            }
+            override fun onCancelled(error: DatabaseError) {}
+        })
+
         transaksiRef.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 var totalIncome = 0.0
+                var todayIncome = 0.0
+                var todayCount  = 0
                 val count = snapshot.childrenCount
+
                 for (data in snapshot.children) {
-                    val totalStr = data.child("totalHarga").value?.toString() ?: "0"
-                    val totalHarga = totalStr.toDoubleOrNull() ?: 0.0
+                    val totalHarga = data.child("totalHarga").getValue(Double::class.java) ?: 0.0
                     totalIncome += totalHarga
+                    val tanggal = data.child("tanggal").getValue(String::class.java) ?: ""
+                    if (tanggal == todayStr) { todayIncome += totalHarga; todayCount++ }
                 }
-                
-                val formatRupiah = NumberFormat.getCurrencyInstance(Locale("in", "ID"))
-                tvTransaksi.text = "$count Trx\n${formatRupiah.format(totalIncome)}"
+
+                tvTodayIncome.text = fmt.format(todayIncome)
+                tvTodayTrx.text    = todayCount.toString()
+                tvTransaksi.text   = "$count Trx\n${fmt.format(totalIncome)}"
             }
             override fun onCancelled(error: DatabaseError) {}
         })
@@ -140,24 +146,15 @@ class MainActivity : AppCompatActivity() {
 
     private fun setGreetingMessage() {
         val hour = Calendar.getInstance().get(Calendar.HOUR_OF_DAY)
-        
         val greetingRes = when (hour) {
-            in 4..11 -> R.string.Selamat_Pagi
+            in 4..11  -> R.string.Selamat_Pagi
             in 12..14 -> R.string.Selamat_Siang
             in 15..17 -> R.string.Selamat_Sore
-            else -> R.string.Selamat_Malam
+            else      -> R.string.Selamat_Malam
         }
-
-        val userName = "Admin"
-        val greetingText = getString(greetingRes, userName)
-        tvGreeting.text = greetingText
-    }
-
-    private fun showPlaceholderDialog(menuName: String) {
-        AlertDialog.Builder(this)
-            .setTitle(menuName)
-            .setMessage("Menu \"$menuName\" masih dalam pengembangan.")
-            .setPositiveButton("Mengerti", null)
-            .show()
+        val prefs = getSharedPreferences("PenjualanPrefs", Context.MODE_PRIVATE)
+        val defaultName = com.google.firebase.auth.FirebaseAuth.getInstance().currentUser?.email?.substringBefore("@") ?: "Admin"
+        val userName = prefs.getString("USER_NAME", "")?.takeIf { it.isNotBlank() } ?: defaultName
+        tvGreeting.text = getString(greetingRes, userName)
     }
 }

@@ -16,9 +16,9 @@ import com.example.penjualan.model.ModelTransaksi
 import com.example.penjualan.model.Product
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.textfield.TextInputEditText
+import com.example.penjualan.FirebaseUtils
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import java.text.NumberFormat
 import java.text.SimpleDateFormat
@@ -27,11 +27,8 @@ import java.util.Locale
 
 class TransaksiActivity : AppCompatActivity() {
 
-    private val database = FirebaseDatabase.getInstance(
-        "https://penjualan-indah-default-rtdb.asia-southeast1.firebasedatabase.app/"
-    )
-    private val transaksiRef = database.getReference("transaksi")
-    private val produkRef = database.getReference("produk")
+    private val transaksiRef = FirebaseUtils.getRef("transaksi")
+    private val produkRef = FirebaseUtils.getRef("produk")
 
     private lateinit var btnBack: ImageView
     private lateinit var rvTransaksi: RecyclerView
@@ -162,9 +159,10 @@ class TransaksiActivity : AppCompatActivity() {
     }
 
     private fun showDeleteDialog(transaksi: ModelTransaksi) {
+        val title = if (!transaksi.nomorNota.isNullOrBlank()) transaksi.nomorNota else transaksi.namaProduk
         AlertDialog.Builder(this)
             .setTitle("Hapus Transaksi")
-            .setMessage("Hapus transaksi \"${transaksi.namaProduk}\"?")
+            .setMessage("Hapus transaksi \"$title\"?")
             .setPositiveButton("Hapus") { _, _ ->
                 val id = transaksi.idTransaksi ?: return@setPositiveButton
                 transaksiRef.child(id).removeValue()

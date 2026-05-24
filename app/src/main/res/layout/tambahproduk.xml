@@ -19,13 +19,13 @@
             android:id="@+id/etNamaProduk"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Nama Produk" />
+            android:hint="@string/nama_produk" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Kategori"
+        android:text="@string/kategori"
         android:layout_marginBottom="4dp"/>
 
     <Spinner
@@ -45,7 +45,7 @@
             android:id="@+id/etStok"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Stok"
+            android:hint="@string/stok"
             android:inputType="number" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -59,7 +59,7 @@
             android:id="@+id/etHargaBeli"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Harga Beli"
+            android:hint="@string/harga_beli"
             android:inputType="numberDecimal" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -72,7 +72,7 @@
             android:id="@+id/etHargaJual"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Harga Jual"
+            android:hint="@string/harga_jual"
             android:inputType="numberDecimal" />
     </com.google.android.material.textfield.TextInputLayout>
 

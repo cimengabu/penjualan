@@ -32,8 +32,14 @@ class TransaksiAdapter(
 
     override fun onBindViewHolder(holder: TransaksiViewHolder, position: Int) {
         val transaksi = transaksiList[position]
-        holder.tvNamaProduk.text = transaksi.namaProduk ?: "Unknown"
-        holder.tvKategori.text = transaksi.kategori ?: "Unknown"
+        if (!transaksi.nomorNota.isNullOrBlank()) {
+            holder.tvNamaProduk.text = "Nota: ${transaksi.nomorNota}"
+            val macam = if (transaksi.items.isNotEmpty()) "${transaksi.items.size} macam produk" else transaksi.namaProduk ?: ""
+            holder.tvKategori.text = "$macam | ${transaksi.namaPelanggan ?: "Umum"}"
+        } else {
+            holder.tvNamaProduk.text = transaksi.namaProduk ?: "Unknown"
+            holder.tvKategori.text = transaksi.kategori ?: "Unknown"
+        }
         holder.tvJumlah.text = "Jumlah: ${transaksi.jumlah}"
         holder.tvTanggal.text = transaksi.tanggal ?: ""
 

@@ -3,18 +3,15 @@ package com.example.penjualan.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.penjualan.FirebaseUtils
 import com.example.penjualan.model.ModelKategori
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 
 class DataKategoriViewModel : ViewModel() {
 
-    private val database = FirebaseDatabase.getInstance(
-        "https://penjualan-indah-default-rtdb.asia-southeast1.firebasedatabase.app/"
-    )
-    private val myRef = database.getReference("kategori")
+    private val myRef = FirebaseUtils.getRef("kategori")
 
     private val _kategoriList = MutableLiveData<List<ModelKategori>>()
     val kategoriList: LiveData<List<ModelKategori>> get() = _kategoriList

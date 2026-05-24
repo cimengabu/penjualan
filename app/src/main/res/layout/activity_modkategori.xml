@@ -17,7 +17,7 @@
         android:layout_marginTop="100dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Tambah Kategori"
+        android:text="@string/tambah_kategori"
         android:gravity="center"
         android:textSize="30sp"
         android:textStyle="bold"/>
@@ -28,7 +28,7 @@
         android:layout_marginHorizontal="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Nama Kategori">
+        android:hint="@string/nama_kategori">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/etNama"
@@ -42,7 +42,7 @@
         android:layout_marginHorizontal="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Status"
+        android:hint="@string/status"
         app:endIconMode="dropdown_menu">
 
         <AutoCompleteTextView
@@ -58,7 +58,7 @@
         android:layout_marginTop="20dp"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:text="Simpan"
+        android:text="@string/simpan"
         android:layout_gravity="center"/>
 
     </LinearLayout>

@@ -1,21 +1,97 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Sales</string>
+    <string name="app_name">Lumina POS</string>
 
     <string name="Selamat_Pagi">Good Morning (%1$s)</string>
     <string name="Selamat_Siang">Good Afternoon (%1$s)</string>
     <string name="Selamat_Sore">Good Evening (%1$s)</string>
     <string name="Selamat_Malam">Good Night (%1$s)</string>
 
-    <string name="estimasi_hari_ini">Today\'s Estimation</string>
-    <string name="transaksi">Transaction</string>
-    <string name="laporan">Report</string>
+    <string name="estimasi_hari_ini">Today\'s Estimate</string>
+    <string name="transaksi">Transactions</string>
+    <string name="laporan">Reports</string>
     <string name="siap_melayani_pelanggan">Ready to serve customers</string>
     <string name="jangan_kecewakan_pelanggan">Don\'t disappoint customers</string>
     <string name="profil">Profile</string>
-    <string name="produk">Product</string>
-    <string name="kategori">Category</string>
-    <string name="pegawai">Employee</string>
-    <string name="cabang">Branch</string>
+    <string name="produk">Products</string>
+    <string name="kategori">Categories</string>
+    <string name="pegawai">Employees</string>
+    <string name="cabang">Branches</string>
     <string name="mencetak">Print</string>
+
+    <string-array name="status_array">
+        <item>Active</item>
+        <item>Inactive</item>
+    </string-array>
+    <string name="data_cabang">Branch Data</string>
+    <string name="ringkasan_hari_ini">Today\'s Summary</string>
+    <string name="cetak_laporan">Print Report</string>
+    <string name="cetak_laporan_penjualan">Print Sales Report</string>
+    <string name="tekan_tombol_di_bawah_ini_untu">Press the button below to print all your transaction reports using the device\'s printing service.</string>
+    <string name="cetak_sekarang">Print Now</string>
+    <string name="data_kategori">Category Data</string>
+    <string name="aktif">Active</string>
+    <string name="laporan_penjualan">Sales Report</string>
+    <string name="total_pendapatan_rp_0">Total Revenue: Rp 0</string>
+    <string name="selamat_datang">Welcome</string>
+    <string name="silakan_masuk_untuk_melanjutka">Please sign in to continue</string>
+    <string name="masuk_akun">Sign In</string>
+    <string name="nama_anda">Your Name</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="masuk">Sign In</string>
+    <string name="belum_punya_akun_daftar_di_sin">Don\'t have an account? Sign up here</string>
+    <string name="data_produk">Product Data</string>
+    <string name="tambah_kategori">Add Category</string>
+    <string name="nama_kategori">Category Name</string>
+    <string name="status">Status</string>
+    <string name="simpan">Save</string>
+    <string name="data_pegawai">Employee Data</string>
+    <string name="toko_anda">Your Store</string>
+    <string name="ketuk_avatar_atau_foto_latar_u">Tap avatar or background photo to change</string>
+
+    <string name="informasi_toko">Store Information</string>
+    <string name="nama_toko">Store Name</string>
+    <string name="alamat_toko">Store Address</string>
+    <string name="no_telepon_toko">Store Phone No.</string>
+    <string name="email_toko">Store Email</string>
+    <string name="website_media_sosial">Website / Social Media</string>
+    <string name="deskripsi_toko">Store Description</string>
+    <string name="keluar_akun">Sign Out</string>
+    <string name="buat_akun_baru">Create New Account</string>
+    <string name="bergabunglah_bersama_kami">Join us</string>
+    <string name="daftar_akun">Sign Up</string>
+    <string name="nama_lengkap">Full Name</string>
+    <string name="password_min_6_karakter">Password (min. 6 chars)</string>
+    <string name="daftar_sekarang">Register Now</string>
+    <string name="sudah_punya_akun_masuk_di_sini">Already have an account? Sign in here</string>
+    <string name="tampilan_theme">Appearance / Theme</string>
+    <string name="mode_gelap_night_mode">Dark Mode</string>
+    <string name="bahasa_language">Language</string>
+    <string name="bahasa_indonesia">Indonesian</string>
+    <string name="english">English</string>
+    <string name="transaksi_kasir">Cashier Transaction</string>
+    <string name="total_rp_0">Total: Rp 0</string>
+    <string name="nama_cabang">Branch Name</string>
+    <string name="alamat_cabang">Branch Address</string>
+    <string name="no_telepon_cabang">Branch Phone No.</string>
+    <string name="nama_pegawai">Employee Name</string>
+    <string name="jabatan">Position</string>
+    <string name="no_handphone">Phone Number</string>
+    <string name="pilih_produk">Select Product</string>
+    <string name="jumlah">Quantity</string>
+    <string name="alamat">Address</string>
+    <string name="no_telepon">Phone Number</string>
+    <string name="no_hp">Mobile No.</string>
+    <string name="nama_produk">Product Name</string>
+    <string name="kategori_elektronik">Category: Electronic</string>
+    <string name="stok_12">Stock: 12</string>
+    <string name="rp_25_000">Rp 25.000</string>
+    <string name="jumlah_1">Quantity: 1</string>
+    <string name="tanggal">Date</string>
+    <string name="stok">Stock</string>
+    <string name="harga_beli">Purchase Price</string>
+    <string name="harga_jual">Selling Price</string>
+    <string name="pengaturan">Settings</string>
+    <string name="pencarian">Search...</string>
 </resources>

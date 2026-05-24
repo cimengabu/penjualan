@@ -12,7 +12,7 @@
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Nama Cabang">
+        android:hint="@string/nama_cabang">
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/etNamaCabang"
             android:layout_width="match_parent"
@@ -23,7 +23,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:hint="Alamat Cabang">
+        android:hint="@string/alamat_cabang">
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/etAlamat"
             android:layout_width="match_parent"
@@ -34,7 +34,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:hint="No. Telepon Cabang">
+        android:hint="@string/no_telepon_cabang">
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/etNoTelp"
             android:inputType="phone"
@@ -47,7 +47,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:hint="Status">
+        android:hint="@string/status">
         <AutoCompleteTextView
             android:id="@+id/actStatusCabang"
             android:layout_width="match_parent"

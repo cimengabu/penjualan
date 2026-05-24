@@ -3,23 +3,23 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     
-    <!-- Premium Pink Mode Palette -->
-    <color name="colorPrimary">#FF85A1</color> <!-- Cute Pink -->
-    <color name="colorPrimaryVariant">#FF4D6D</color> <!-- Dark Pink -->
+    <!-- Premium Dark Brown Mode Palette -->
+    <color name="colorPrimary">#5D4037</color> <!-- Brown 700 -->
+    <color name="colorPrimaryVariant">#3E2723</color> <!-- Brown 900 -->
     <color name="colorOnPrimary">#FFFFFF</color>
     
-    <color name="colorSecondary">#F9A8D4</color> <!-- Light Pink -->
-    <color name="colorSecondaryVariant">#F472B6</color> <!-- Deep Pink -->
-    <color name="colorOnSecondary">#000000</color>
+    <color name="colorSecondary">#8D6E63</color> <!-- Brown 400 -->
+    <color name="colorSecondaryVariant">#795548</color> <!-- Brown 500 -->
+    <color name="colorOnSecondary">#FFFFFF</color>
     
-    <color name="colorBackground">#FFF0F5</color> <!-- Lavender Blush / Very Light Pink -->
+    <color name="colorBackground">#EFEBE9</color> <!-- Brown 50 -->
     <color name="colorSurface">#FFFFFF</color> <!-- White for Cards -->
-    <color name="colorOnBackground">#333333</color> <!-- Dark Text -->
-    <color name="colorOnSurface">#333333</color>
+    <color name="colorOnBackground">#3E2723</color> <!-- Dark Brown Text -->
+    <color name="colorOnSurface">#3E2723</color>
     
     <color name="colorError">#B00020</color>
     <color name="colorOnError">#FFFFFF</color>
 
     <color name="colorTextSecondary">#757575</color> <!-- Gray Text -->
-    <color name="colorDivider">#E0E0E0</color> <!-- Light Divider -->
+    <color name="colorDivider">#D7CCC8</color> <!-- Light Divider -->
 </resources>

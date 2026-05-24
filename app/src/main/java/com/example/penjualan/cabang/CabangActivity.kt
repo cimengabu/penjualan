@@ -14,17 +14,14 @@ import com.example.penjualan.R
 import com.example.penjualan.model.ModelCabang
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.textfield.TextInputEditText
+import com.example.penjualan.FirebaseUtils
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 
 class CabangActivity : AppCompatActivity() {
 
-    private val database = FirebaseDatabase.getInstance(
-        "https://penjualan-indah-default-rtdb.asia-southeast1.firebasedatabase.app/"
-    )
-    private val cabangRef = database.getReference("cabang")
+    private val cabangRef = FirebaseUtils.getRef("cabang")
 
     private lateinit var btnBack: ImageView
     private lateinit var rvCabang: RecyclerView

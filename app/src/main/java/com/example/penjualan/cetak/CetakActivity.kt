@@ -12,6 +12,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.penjualan.R
 import com.example.penjualan.model.ModelTransaksi
+import com.example.penjualan.FirebaseUtils
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -26,10 +27,7 @@ class CetakActivity : AppCompatActivity() {
 
     private var myWebView: WebView? = null
     
-    private val database = FirebaseDatabase.getInstance(
-        "https://penjualan-indah-default-rtdb.asia-southeast1.firebasedatabase.app/"
-    )
-    private val transaksiRef = database.getReference("transaksi")
+    private val transaksiRef = FirebaseUtils.getRef("transaksi")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

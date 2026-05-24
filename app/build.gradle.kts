@@ -2,6 +2,7 @@ plugins {
     id("com.android.application")
     kotlin("android")
     kotlin("kapt")
+    kotlin("plugin.parcelize")
     id("com.google.dagger.hilt.android")
     id("com.google.gms.google-services")
 }

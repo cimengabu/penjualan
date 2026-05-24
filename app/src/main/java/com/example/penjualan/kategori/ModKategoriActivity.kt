@@ -11,15 +11,12 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.penjualan.R
+import com.example.penjualan.FirebaseUtils
 import com.google.android.material.textfield.TextInputEditText
-import com.google.firebase.database.FirebaseDatabase
 
 class ModKategoriActivity : AppCompatActivity() {
 
-    private val database = FirebaseDatabase.getInstance(
-        "https://penjualan-indah-default-rtdb.asia-southeast1.firebasedatabase.app/"
-    )
-    private val myRef = database.getReference("kategori")
+    private val myRef = FirebaseUtils.getRef("kategori")
 
     private lateinit var tvJudul: TextView
     private lateinit var etNamaKategori: TextInputEditText

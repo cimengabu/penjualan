@@ -15,8 +15,10 @@ import com.google.firebase.auth.FirebaseAuthWeakPasswordException
 class RegisterActivity : AppCompatActivity() {
 
     private lateinit var auth: FirebaseAuth
+    private lateinit var etName: TextInputEditText
     private lateinit var etEmail: TextInputEditText
     private lateinit var etPassword: TextInputEditText
+    private lateinit var tilName: TextInputLayout
     private lateinit var tilEmail: TextInputLayout
     private lateinit var tilPassword: TextInputLayout
     private lateinit var btnRegister: MaterialButton
@@ -27,8 +29,10 @@ class RegisterActivity : AppCompatActivity() {
 
         auth = FirebaseAuth.getInstance()
 
+        etName     = findViewById(R.id.etName)
         etEmail    = findViewById(R.id.etEmail)
         etPassword = findViewById(R.id.etPassword)
+        tilName    = findViewById(R.id.tilName)
         tilEmail   = findViewById(R.id.tilEmail)
         tilPassword= findViewById(R.id.tilPassword)
         btnRegister= findViewById(R.id.btnRegister)
@@ -36,15 +40,21 @@ class RegisterActivity : AppCompatActivity() {
         val tvLogin = findViewById<android.widget.TextView>(R.id.tvLogin)
 
         btnRegister.setOnClickListener {
+            val name     = etName.text.toString().trim()
             val email    = etEmail.text.toString().trim()
             val password = etPassword.text.toString().trim()
 
             // Reset error
+            tilName.error     = null
             tilEmail.error    = null
             tilPassword.error = null
 
             // Validasi
             var valid = true
+            if (name.isEmpty()) {
+                tilName.error = "Nama tidak boleh kosong"
+                valid = false
+            }
             if (email.isEmpty()) {
                 tilEmail.error = "Email tidak boleh kosong"
                 valid = false
@@ -68,6 +78,8 @@ class RegisterActivity : AppCompatActivity() {
                     setLoading(false)
                     if (task.isSuccessful) {
                         Log.d("RegisterActivity", "Register sukses")
+                        val prefs = getSharedPreferences("PenjualanPrefs", android.content.Context.MODE_PRIVATE)
+                        prefs.edit().putString("USER_NAME", name).apply()
                         Toast.makeText(
                             this,
                             "Akun berhasil dibuat! Silakan masuk.",
