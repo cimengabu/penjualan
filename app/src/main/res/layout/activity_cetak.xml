@@ -31,7 +31,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/cetak_laporan"
+                android:text="Cetak Nota"
                 android:textColor="@color/colorOnPrimary"
                 android:textSize="20sp"
                 android:textStyle="bold"
@@ -63,7 +63,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/cetak_laporan_penjualan"
+                    android:text="Cetak Nota Penjualan"
                     android:textColor="@color/colorOnSurface"
                     android:textSize="18sp"
                     android:textStyle="bold"

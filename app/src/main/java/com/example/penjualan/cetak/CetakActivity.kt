@@ -15,7 +15,6 @@ import com.example.penjualan.model.ModelTransaksi
 import com.example.penjualan.FirebaseUtils
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import java.text.NumberFormat
 import java.text.SimpleDateFormat
@@ -26,7 +25,7 @@ import java.util.Locale
 class CetakActivity : AppCompatActivity() {
 
     private var myWebView: WebView? = null
-    
+
     private val transaksiRef = FirebaseUtils.getRef("transaksi")
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -60,17 +59,19 @@ class CetakActivity : AppCompatActivity() {
     }
 
     private fun doPrint(transaksiList: List<ModelTransaksi>) {
+        // 1. Gunakan 'this' secara langsung untuk merujuk murni ke Activity
         val webView = WebView(this)
         webView.webViewClient = object : WebViewClient() {
             override fun onPageFinished(view: WebView, url: String) {
                 createWebPrintJob(view)
-                myWebView = null
+                // 2. JANGAN di-null-kan di sini! Sistem printer butuh waktu buat membaca WebView.
+                // myWebView = null
             }
         }
 
         val fmt = NumberFormat.getCurrencyInstance(Locale("in", "ID"))
         val dateString = SimpleDateFormat("dd MMMM yyyy HH:mm:ss", Locale("id", "ID")).format(Date())
-        
+
         var totalKeseluruhan = 0.0
         val tableRows = StringBuilder()
 
@@ -109,8 +110,8 @@ class CetakActivity : AppCompatActivity() {
                 </head>
                 <body>
                     <div class="header">
-                        <h1>LAPORAN PENJUALAN</h1>
-                        <p class="subtitle">Laporan Resmi Transaksi Toko</p>
+                        <h1>NOTA PENJUALAN</h1>
+                        <p class="subtitle">Nota Resmi Transaksi Toko</p>
                     </div>
                     <div class="meta-info">
                         <p><b>Tanggal Cetak:</b> $dateString</p>
@@ -141,9 +142,10 @@ class CetakActivity : AppCompatActivity() {
     }
 
     private fun createWebPrintJob(webView: WebView) {
-        val printManager = this.getSystemService(Context.PRINT_SERVICE) as PrintManager
-        val printAdapter = webView.createPrintDocumentAdapter("Laporan Penjualan")
+        // 3. Panggil sistem servis secara langsung, tanpa tambahan this@CetakActivity
+        val printManager = getSystemService(Context.PRINT_SERVICE) as PrintManager
         val jobName = "${getString(R.string.app_name)} Document"
+        val printAdapter = webView.createPrintDocumentAdapter(jobName)
 
         try {
             printManager.print(jobName, printAdapter, PrintAttributes.Builder().build())

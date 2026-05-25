@@ -6,8 +6,8 @@
         android:name=".PenjualanApplication"
         android:allowBackup="true"
         android:label="@string/app_name"
-        android:icon="@mipmap/ic_launcher"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:icon="@drawable/ic_logo_brown"
+        android:roundIcon="@drawable/ic_logo_brown"
         android:theme="@style/Theme.Penjualan">
 
         <!-- Login (Launcher) -->

@@ -37,8 +37,6 @@ class MainActivity : AppCompatActivity() {
     private lateinit var cardCabang: CardView
     private lateinit var cardMencetak: CardView
 
-    private lateinit var ivTransaksi: ImageView
-    private lateinit var tvTransaksi: TextView
     private lateinit var ivLaporan: ImageView
     private lateinit var tvLaporan: TextView
     private lateinit var llPelanggan: android.widget.LinearLayout
@@ -69,8 +67,6 @@ class MainActivity : AppCompatActivity() {
         cardCabang       = findViewById(R.id.card6)
         cardMencetak     = findViewById(R.id.card7)
 
-        ivTransaksi      = findViewById(R.id.ivTransaksi)
-        tvTransaksi      = findViewById(R.id.tvTransaksi)
         ivLaporan        = findViewById(R.id.ivLaporan)
         tvLaporan        = findViewById(R.id.tvLaporan)
         llPelanggan      = findViewById(R.id.llPelanggan)
@@ -98,8 +94,6 @@ class MainActivity : AppCompatActivity() {
         cardPegawai.setOnClickListener      { startActivity(Intent(this, com.example.penjualan.pegawai.PegawaiActivity::class.java)) }
         cardCabang.setOnClickListener       { startActivity(Intent(this, com.example.penjualan.cabang.CabangActivity::class.java)) }
         cardMencetak.setOnClickListener     { startActivity(Intent(this, com.example.penjualan.cetak.CetakActivity::class.java)) }
-        ivTransaksi.setOnClickListener      { startActivity(Intent(this, com.example.penjualan.transaksi.TransaksiActivity::class.java)) }
-        tvTransaksi.setOnClickListener      { startActivity(Intent(this, com.example.penjualan.transaksi.TransaksiActivity::class.java)) }
         ivLaporan.setOnClickListener        { startActivity(Intent(this, com.example.penjualan.laporan.LaporanActivity::class.java)) }
         tvLaporan.setOnClickListener        { startActivity(Intent(this, com.example.penjualan.laporan.LaporanActivity::class.java)) }
 
@@ -141,7 +135,7 @@ class MainActivity : AppCompatActivity() {
 
                 tvTodayIncome.text = fmt.format(todayIncome)
                 tvTodayTrx.text    = todayCount.toString()
-                tvTransaksi.text   = "$count Trx\n${fmt.format(totalIncome)}"
+
             }
             override fun onCancelled(error: DatabaseError) {}
         })
