@@ -41,8 +41,8 @@ class CabangAdapter(
             tvNama.text = c.namaCabang ?: "N/A"
             tvAlamat.text = c.alamat?.takeIf { it.isNotEmpty() }?.let { "Alamat: $it" } ?: "Alamat: -"
             tvNoTelp.text = c.noTelp?.takeIf { it.isNotEmpty() }?.let { "Telp: $it" } ?: "Telp: -"
-            tvStatus.text = c.statusCabang ?: "Aktif"
-            val color = if (c.statusCabang.equals("Nonaktif", ignoreCase = true))
+            tvStatus.text = c.statusCabang ?: itemView.context.getString(R.string.aktif)
+            val color = if (c.statusCabang.equals(itemView.context.getString(R.string.nonaktif), ignoreCase = true))
                 android.R.color.holo_red_dark else android.R.color.holo_green_dark
             tvStatus.setTextColor(ContextCompat.getColor(itemView.context, color))
             btnEdit.setOnClickListener { onEditClick(c) }

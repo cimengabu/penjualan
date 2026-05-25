@@ -86,7 +86,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="💰  Pendapatan Hari Ini"
+                        android:text="@string/pendapatan_hari_ini_emoji"
                         android:textColor="#CCFFFFFF"
                         android:textSize="13sp"/>
 
@@ -124,7 +124,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Trx Hari Ini"
+                                android:text="@string/trx_hari_ini"
                                 android:textColor="#CCFFFFFF"
                                 android:textSize="10sp"
                                 android:gravity="center"/>
@@ -150,7 +150,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Produk"
+                                android:text="@string/produk"
                                 android:textColor="#CCFFFFFF"
                                 android:textSize="10sp"
                                 android:gravity="center"/>
@@ -176,7 +176,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Pelanggan"
+                                android:text="@string/pelanggan"
                                 android:textColor="#CCFFFFFF"
                                 android:textSize="10sp"
                                 android:gravity="center"/>
@@ -199,7 +199,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Aktif"
+                                android:text="@string/aktif"
                                 android:textColor="#CCFFFFFF"
                                 android:textSize="10sp"
                                 android:gravity="center"/>
@@ -216,7 +216,7 @@
             android:layout_height="64dp"
             android:layout_marginHorizontal="20dp"
             android:layout_marginTop="20dp"
-            android:text="🛒  BUKA KASIR POS"
+            android:text="@string/buka_kasir_pos_emoji"
             android:textSize="17sp"
             android:textStyle="bold"
             android:textColor="@android:color/white"
@@ -320,7 +320,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="6dp"
-                            android:text="Pelanggan"
+                            android:text="@string/pelanggan"
                             android:textColor="@color/colorOnSurface"
                             android:textStyle="bold"
                             android:textSize="12sp"
@@ -337,7 +337,7 @@
             android:layout_marginStart="20dp"
             android:layout_marginTop="20dp"
             android:layout_marginBottom="4dp"
-            android:text="Menu Utama"
+            android:text="@string/menu_utama"
             android:textColor="@color/colorOnPrimary"
             android:textStyle="bold"
             android:textSize="14sp"/>
@@ -515,7 +515,7 @@
                         app:tint="@color/colorPrimaryVariant"/>
                     <TextView android:id="@+id/txt7" android:layout_width="wrap_content"
                         android:layout_height="wrap_content" android:layout_marginTop="6dp"
-                        android:text="Cetak Laporan" android:textColor="@color/colorOnSurface"
+                        android:text="@string/cetak_laporan" android:textColor="@color/colorOnSurface"
                         android:textSize="11sp" android:textStyle="bold"/>
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>

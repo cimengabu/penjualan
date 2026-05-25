@@ -1,5 +1,7 @@
 package com.example.penjualan.pos
 
+import com.example.penjualan.BaseActivity
+
 import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
@@ -30,14 +32,10 @@ import androidx.core.content.ContextCompat
 import com.dantsu.escposprinter.EscPosPrinter
 import com.dantsu.escposprinter.connection.bluetooth.BluetoothPrintersConnections
 
-class ReceiptActivity : AppCompatActivity() {
+class ReceiptActivity : BaseActivity() {
 
     private val fmt = NumberFormat.getCurrencyInstance(Locale("in", "ID"))
     private val profilRef = FirebaseUtils.getRef("profil")
-
-    override fun attachBaseContext(newBase: Context) {
-        super.attachBaseContext(LocaleHelper.onAttach(newBase))
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,10 +47,10 @@ class ReceiptActivity : AppCompatActivity() {
         val kasir       = intent.getStringExtra("NAMA_KASIR") ?: "-"
         val pelanggan   = intent.getStringExtra("NAMA_PELANGGAN") ?: "Umum"
         val noHp        = intent.getStringExtra("NO_HP_PELANGGAN") ?: ""
-        val metode      = intent.getStringExtra("METODE") ?: "Tunai"
-        val subtotal    = intent.getDoubleExtra("SUBTOTAL", 0.0)
-        val diskon      = intent.getDoubleExtra("DISKON", 0.0)
-        val pajak       = intent.getDoubleExtra("PAJAK", 0.0)
+        val metode      = intent.getStringExtra("METODE") ?: getString(R.string.tunai)
+        val subtotal    = intent.getDoubleExtra(getString(R.string.subtotal), 0.0)
+        val diskon      = intent.getDoubleExtra(getString(R.string.diskon), 0.0)
+        val pajak       = intent.getDoubleExtra(getString(R.string.pajak), 0.0)
         val total       = intent.getDoubleExtra("TOTAL", 0.0)
         val dibayar     = intent.getDoubleExtra("DIBAYAR", 0.0)
         val kembalian   = intent.getDoubleExtra("KEMBALIAN", 0.0)
@@ -138,7 +136,7 @@ class ReceiptActivity : AppCompatActivity() {
         })
 
         // Fetch Cabang
-        FirebaseUtils.getRef("cabang").addListenerForSingleValueEvent(object : ValueEventListener {
+        FirebaseUtils.getRef(getString(R.string.cabang)).addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 val cabangData = snapshot.children.firstOrNull()
                 val namaCabang = cabangData?.child("namaCabang")?.getValue(String::class.java) ?: "-"
@@ -246,10 +244,10 @@ class ReceiptActivity : AppCompatActivity() {
         androidx.appcompat.app.AlertDialog.Builder(this)
             .setTitle("Pratinjau Nota (Preview)")
             .setMessage(previewLayar)
-            .setPositiveButton("Cetak Sekarang") { _, _ ->
+            .setPositiveButton(getString(R.string.cetak_sekarang)) { _, _ ->
                 executePrint(printText)
             }
-            .setNegativeButton("Batal", null)
+            .setNegativeButton(getString(R.string.batal), null)
             .show()
     }
 

@@ -45,7 +45,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:layout_marginStart="12dp"
-                    android:text="Kasir POS"
+                    android:text="@string/kasir_pos"
                     android:textColor="@color/colorOnPrimary"
                     android:textSize="18sp"
                     android:textStyle="bold"/>
@@ -66,7 +66,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
-                android:text="Total Belanja"
+                android:text="@string/total_belanja"
                 android:textColor="#CCFFFFFF"
                 android:textSize="13sp"/>
 
@@ -100,7 +100,7 @@
                     android:id="@+id/btnCheckout"
                     android:layout_width="wrap_content"
                     android:layout_height="36dp"
-                    android:text="BAYAR"
+                    android:text="@string/bayar"
                     android:textStyle="bold"
                     android:textSize="13sp"
                     app:cornerRadius="18dp"
@@ -189,7 +189,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="🛒 Keranjang"
+                    android:text="@string/keranjang_emoji"
                     android:textColor="@color/colorOnSurface"
                     android:textStyle="bold"
                     android:textSize="15sp"/>

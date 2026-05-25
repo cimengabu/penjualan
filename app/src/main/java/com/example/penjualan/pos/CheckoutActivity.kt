@@ -1,5 +1,7 @@
 package com.example.penjualan.pos
 
+import com.example.penjualan.BaseActivity
+
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
@@ -25,7 +27,7 @@ import java.text.NumberFormat
 import java.text.SimpleDateFormat
 import java.util.*
 
-class CheckoutActivity : AppCompatActivity() {
+class CheckoutActivity : BaseActivity() {
 
     @Parcelize
     data class CartItemParcel(
@@ -38,7 +40,7 @@ class CheckoutActivity : AppCompatActivity() {
     ) : Parcelable
 
     private val transaksiRef = FirebaseUtils.getRef("transaksi")
-    private val produkRef = FirebaseUtils.getRef("produk")
+    private val produkRef = FirebaseUtils.getRef(getString(R.string.produk))
     private val fmt = NumberFormat.getCurrencyInstance(Locale("in", "ID"))
 
     private lateinit var tvTotalCheckout: TextView
@@ -59,10 +61,6 @@ class CheckoutActivity : AppCompatActivity() {
 
     private var cartItems = listOf<CartItemParcel>()
     private var totalHarga = 0.0
-
-    override fun attachBaseContext(newBase: Context) {
-        super.attachBaseContext(LocaleHelper.onAttach(newBase))
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -156,11 +154,11 @@ class CheckoutActivity : AppCompatActivity() {
 
     private fun getSelectedPaymentMethod(): String {
         return when (rgMetodePembayaran.checkedRadioButtonId) {
-            R.id.rbTunai -> "Tunai"
-            R.id.rbTransfer -> "Transfer Bank"
+            R.id.rbTunai -> getString(R.string.tunai)
+            R.id.rbTransfer -> getString(R.string.transfer_bank)
             R.id.rbQris -> "QRIS / E-Wallet"
             R.id.rbDebit -> "Kartu Debit/Kredit"
-            else -> "Tunai"
+            else -> getString(R.string.tunai)
         }
     }
 
@@ -170,7 +168,7 @@ class CheckoutActivity : AppCompatActivity() {
         val namaPelanggan = etNamaPelangganCO.text.toString().trim()
         val noHpPelanggan = etNoHpPelangganCO.text.toString().trim()
 
-        if (metode == "Tunai") {
+        if (metode == getString(R.string.tunai)) {
             val tunai = etUangTunai.text.toString().toDoubleOrNull() ?: 0.0
             if (tunai < totalHarga) {
                 Toast.makeText(this, getString(R.string.uang_tunai_tidak_cukup), Toast.LENGTH_SHORT).show()
@@ -183,8 +181,8 @@ class CheckoutActivity : AppCompatActivity() {
         val tanggal = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(now)
         val waktu = SimpleDateFormat("HH:mm:ss", Locale.getDefault()).format(now)
         val nomorNota = "INV-${SimpleDateFormat("yyyyMMdd-HHmmss", Locale.getDefault()).format(now)}"
-        val tunaiDibayar = if (metode == "Tunai") etUangTunai.text.toString().toDoubleOrNull() ?: totalHarga else totalHarga
-        val kembalian = if (metode == "Tunai") maxOf(0.0, tunaiDibayar - totalHarga) else 0.0
+        val tunaiDibayar = if (metode == getString(R.string.tunai)) etUangTunai.text.toString().toDoubleOrNull() ?: totalHarga else totalHarga
+        val kembalian = if (metode == getString(R.string.tunai)) maxOf(0.0, tunaiDibayar - totalHarga) else 0.0
 
         // Build items map
         val itemsMap = mutableMapOf<String, ItemTransaksi>()
@@ -245,9 +243,9 @@ class CheckoutActivity : AppCompatActivity() {
                 intent.putExtra("NAMA_PELANGGAN", namaPelanggan.ifBlank { "Umum" })
                 intent.putExtra("NO_HP_PELANGGAN", noHpPelanggan)
                 intent.putExtra("METODE", metode)
-                intent.putExtra("SUBTOTAL", totalHarga)
-                intent.putExtra("DISKON", 0.0)
-                intent.putExtra("PAJAK", 0.0)
+                intent.putExtra(getString(R.string.subtotal), totalHarga)
+                intent.putExtra(getString(R.string.diskon), 0.0)
+                intent.putExtra(getString(R.string.pajak), 0.0)
                 intent.putExtra("TOTAL", totalHarga)
                 intent.putExtra("DIBAYAR", tunaiDibayar)
                 intent.putExtra("KEMBALIAN", kembalian)

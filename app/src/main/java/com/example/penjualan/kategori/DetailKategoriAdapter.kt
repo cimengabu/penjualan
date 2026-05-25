@@ -39,10 +39,10 @@ class DetailKategoriAdapter(
 
         fun bind(kategori: ModelKategori) {
             tvNamaKategori.text = kategori.namaKategori ?: "N/A"
-            chipStatus.text = kategori.statusKategori ?: "Aktif"
+            chipStatus.text = kategori.statusKategori ?: itemView.context.getString(R.string.aktif)
 
             // Highlight status styling (gunakan ContextCompat agar tidak deprecated)
-            if (kategori.statusKategori.equals("Nonaktif", ignoreCase = true)) {
+            if (kategori.statusKategori.equals(itemView.context.getString(R.string.nonaktif), ignoreCase = true)) {
                 chipStatus.setTextColor(
                     ContextCompat.getColor(itemView.context, android.R.color.holo_red_dark)
                 )

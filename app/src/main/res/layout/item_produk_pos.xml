@@ -50,7 +50,7 @@
             android:id="@+id/tvKategoriPOS"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Kategori"
+            android:text="@string/kategori"
             android:textColor="@color/colorTextSecondary"
             android:textSize="11sp"/>
 

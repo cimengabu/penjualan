@@ -11,7 +11,7 @@ import com.google.firebase.database.ValueEventListener
 
 class DataKategoriViewModel : ViewModel() {
 
-    private val myRef = FirebaseUtils.getRef("kategori")
+    private val myRef = FirebaseUtils.getRef("Kategori")
 
     private val _kategoriList = MutableLiveData<List<ModelKategori>>()
     val kategoriList: LiveData<List<ModelKategori>> get() = _kategoriList

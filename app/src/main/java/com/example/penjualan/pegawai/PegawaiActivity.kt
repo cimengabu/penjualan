@@ -1,5 +1,7 @@
 package com.example.penjualan.pegawai
 
+import com.example.penjualan.BaseActivity
+
 import android.os.Bundle
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
@@ -19,7 +21,7 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
 
-class PegawaiActivity : AppCompatActivity() {
+class PegawaiActivity : BaseActivity() {
 
     private val pegawaiRef = FirebaseUtils.getRef("pegawai")
 
@@ -91,7 +93,7 @@ class PegawaiActivity : AppCompatActivity() {
         val etNoHp = dialogView.findViewById<TextInputEditText>(R.id.etNoHp)
         val actStatus = dialogView.findViewById<AutoCompleteTextView>(R.id.actStatusPegawai)
 
-        val statusOptions = arrayOf("Aktif", "Nonaktif")
+        val statusOptions = arrayOf(getString(R.string.aktif), getString(R.string.nonaktif))
         actStatus.setAdapter(ArrayAdapter(this, android.R.layout.simple_dropdown_item_1line, statusOptions))
 
         if (pegawai != null) {
@@ -106,7 +108,7 @@ class PegawaiActivity : AppCompatActivity() {
         AlertDialog.Builder(this)
             .setTitle(if (pegawai != null) "Ubah Pegawai" else "Tambah Pegawai")
             .setView(dialogView)
-            .setPositiveButton("Simpan") { _, _ ->
+            .setPositiveButton(getString(R.string.simpan)) { _, _ ->
                 val nama = etNama.text.toString().trim()
                 if (nama.isEmpty()) {
                     Toast.makeText(this, "Nama pegawai wajib diisi", Toast.LENGTH_SHORT).show()
@@ -128,7 +130,7 @@ class PegawaiActivity : AppCompatActivity() {
                         Toast.makeText(this, "Gagal menyimpan: ${it.message}", Toast.LENGTH_SHORT).show()
                     }
             }
-            .setNegativeButton("Batal", null)
+            .setNegativeButton(getString(R.string.batal), null)
             .show()
     }
 
@@ -136,13 +138,13 @@ class PegawaiActivity : AppCompatActivity() {
         AlertDialog.Builder(this)
             .setTitle("Hapus Pegawai")
             .setMessage("Hapus pegawai \"${pegawai.namaPegawai}\"?")
-            .setPositiveButton("Hapus") { _, _ ->
+            .setPositiveButton(getString(R.string.hapus)) { _, _ ->
                 val id = pegawai.idPegawai ?: return@setPositiveButton
                 pegawaiRef.child(id).removeValue()
                     .addOnSuccessListener { Toast.makeText(this, "Pegawai dihapus", Toast.LENGTH_SHORT).show() }
                     .addOnFailureListener { Toast.makeText(this, "Gagal menghapus: ${it.message}", Toast.LENGTH_SHORT).show() }
             }
-            .setNegativeButton("Batal", null)
+            .setNegativeButton(getString(R.string.batal), null)
             .show()
     }
 }

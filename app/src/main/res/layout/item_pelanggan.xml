@@ -50,7 +50,7 @@
                 android:id="@+id/tvNamaPelangganItem"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Nama Pelanggan"
+                android:text="@string/nama_pelanggan"
                 android:textStyle="bold"
                 android:textColor="@color/colorOnSurface"
                 android:textSize="14sp"/>

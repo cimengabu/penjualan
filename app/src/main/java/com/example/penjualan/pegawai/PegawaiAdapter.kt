@@ -45,9 +45,9 @@ class PegawaiAdapter(
             tvNama.text = p.namaPegawai ?: "N/A"
             tvJabatan.text = p.jabatan?.takeIf { it.isNotEmpty() }?.let { "Jabatan: $it" } ?: "Jabatan: -"
             tvNoHp.text = p.noHp?.takeIf { it.isNotEmpty() }?.let { "HP: $it" } ?: "HP: -"
-            tvStatus.text = p.statusPegawai ?: "Aktif"
+            tvStatus.text = p.statusPegawai ?: itemView.context.getString(R.string.aktif)
 
-            val statusColor = if (p.statusPegawai.equals("Nonaktif", ignoreCase = true))
+            val statusColor = if (p.statusPegawai.equals(itemView.context.getString(R.string.nonaktif), ignoreCase = true))
                 android.R.color.holo_red_dark else android.R.color.holo_green_dark
             tvStatus.setTextColor(ContextCompat.getColor(itemView.context, statusColor))
 

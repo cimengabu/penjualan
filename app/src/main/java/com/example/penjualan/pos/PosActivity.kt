@@ -1,5 +1,7 @@
 package com.example.penjualan.pos
 
+import com.example.penjualan.BaseActivity
+
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
@@ -24,9 +26,9 @@ import com.google.firebase.database.ValueEventListener
 import java.text.NumberFormat
 import java.util.Locale
 
-class PosActivity : AppCompatActivity() {
+class PosActivity : BaseActivity() {
 
-    private val produkRef = FirebaseUtils.getRef("produk")
+    private val produkRef = FirebaseUtils.getRef(getString(R.string.produk))
     private val fmt = NumberFormat.getCurrencyInstance(Locale("in", "ID"))
 
     private lateinit var tvTotalBelanja: TextView
@@ -47,10 +49,6 @@ class PosActivity : AppCompatActivity() {
     private lateinit var keranjangAdapter: KeranjangAdapter
 
     private var selectedKategori = "Semua"
-
-    override fun attachBaseContext(newBase: Context) {
-        super.attachBaseContext(LocaleHelper.onAttach(newBase))
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

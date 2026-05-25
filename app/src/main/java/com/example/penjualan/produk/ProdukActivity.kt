@@ -1,5 +1,7 @@
 package com.example.penjualan.produk
 
+import com.example.penjualan.BaseActivity
+
 import android.os.Bundle
 import android.view.View
 import android.widget.ArrayAdapter
@@ -19,10 +21,10 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
 
-class ProdukActivity : AppCompatActivity() {
+class ProdukActivity : BaseActivity() {
 
-    private val productsRef = FirebaseUtils.getRef("produk")
-    private val categoriesRef = FirebaseUtils.getRef("kategori")
+    private val productsRef = FirebaseUtils.getRef(getString(R.string.produk))
+    private val categoriesRef = FirebaseUtils.getRef(getString(R.string.kategori))
 
     private lateinit var btnBack: ImageView
     private lateinit var recyclerViewProducts: RecyclerView
@@ -144,12 +146,12 @@ class ProdukActivity : AppCompatActivity() {
             }
         }
 
-        val dialogTitle = if (product != null) "Ubah Produk" else "Tambah Produk Baru"
+        val dialogTitle = if (product != null) getString(R.string.ubah_produk) else "Tambah Produk Baru"
 
         AlertDialog.Builder(this)
             .setTitle(dialogTitle)
             .setView(dialogView)
-            .setPositiveButton("Simpan") { dialog, _ ->
+            .setPositiveButton(getString(R.string.simpan)) { dialog, _ ->
                 val name = etNamaProduk.text.toString().trim()
                 val category = spinnerKategori.selectedItem?.toString() ?: "Lainnya"
                 val stock = etStok.text.toString().trim().toIntOrNull() ?: 0
@@ -182,7 +184,7 @@ class ProdukActivity : AppCompatActivity() {
                         }
                 }
             }
-            .setNegativeButton("Batal", null)
+            .setNegativeButton(getString(R.string.batal), null)
             .show()
     }
 
@@ -190,7 +192,7 @@ class ProdukActivity : AppCompatActivity() {
         AlertDialog.Builder(this)
             .setTitle("Hapus Produk")
             .setMessage("Apakah Anda yakin ingin menghapus produk \"${product.name}\"?")
-            .setPositiveButton("Hapus") { _, _ ->
+            .setPositiveButton(getString(R.string.hapus)) { _, _ ->
                 val id = product.id ?: return@setPositiveButton
                 productsRef.child(id).removeValue()
                     .addOnSuccessListener {
@@ -200,7 +202,7 @@ class ProdukActivity : AppCompatActivity() {
                         Toast.makeText(this, "Gagal menghapus produk: ${it.message}", Toast.LENGTH_SHORT).show()
                     }
             }
-            .setNegativeButton("Batal", null)
+            .setNegativeButton(getString(R.string.batal), null)
             .show()
     }
 }

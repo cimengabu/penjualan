@@ -1,5 +1,7 @@
 package com.example.penjualan.kategori
 
+import com.example.penjualan.BaseActivity
+
 import android.os.Bundle
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
@@ -14,9 +16,9 @@ import com.example.penjualan.R
 import com.example.penjualan.FirebaseUtils
 import com.google.android.material.textfield.TextInputEditText
 
-class ModKategoriActivity : AppCompatActivity() {
+class ModKategoriActivity : BaseActivity() {
 
-    private val myRef = FirebaseUtils.getRef("kategori")
+    private val myRef = FirebaseUtils.getRef(getString(R.string.kategori))
 
     private lateinit var tvJudul: TextView
     private lateinit var etNamaKategori: TextInputEditText
@@ -63,7 +65,7 @@ class ModKategoriActivity : AppCompatActivity() {
             btnSimpan.text = "Perbarui"
         } else {
             tvJudul.text = "Tambah Kategori"
-            btnSimpan.text = "Simpan"
+            btnSimpan.text = getString(R.string.simpan)
         }
 
         // Handle click save

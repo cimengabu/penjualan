@@ -1,5 +1,7 @@
 package com.example.penjualan.pelanggan
 
+import com.example.penjualan.BaseActivity
+
 import android.content.Context
 import android.os.Bundle
 import android.text.Editable
@@ -19,7 +21,7 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
 
-class PelangganActivity : AppCompatActivity() {
+class PelangganActivity : BaseActivity() {
 
     private val pelangganRef = FirebaseUtils.getRef("pelanggan")
 
@@ -30,10 +32,6 @@ class PelangganActivity : AppCompatActivity() {
 
     private lateinit var adapter: PelangganAdapter
     private val allList = mutableListOf<ModelPelanggan>()
-
-    override fun attachBaseContext(newBase: Context) {
-        super.attachBaseContext(LocaleHelper.onAttach(newBase))
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -105,7 +103,7 @@ class PelangganActivity : AppCompatActivity() {
         AlertDialog.Builder(this)
             .setTitle(if (pelanggan == null) "Tambah Pelanggan" else "Ubah Pelanggan")
             .setView(dialogView)
-            .setPositiveButton("Simpan") { _, _ ->
+            .setPositiveButton(getString(R.string.simpan)) { _, _ ->
                 val nama = etNama.text.toString().trim()
                 if (nama.isEmpty()) {
                     Toast.makeText(this, "Nama pelanggan wajib diisi", Toast.LENGTH_SHORT).show()
@@ -129,7 +127,7 @@ class PelangganActivity : AppCompatActivity() {
                         Toast.makeText(this, "Gagal: ${it.message}", Toast.LENGTH_SHORT).show()
                     }
             }
-            .setNegativeButton("Batal", null)
+            .setNegativeButton(getString(R.string.batal), null)
             .show()
     }
 
@@ -137,13 +135,13 @@ class PelangganActivity : AppCompatActivity() {
         AlertDialog.Builder(this)
             .setTitle("Hapus Pelanggan")
             .setMessage("Hapus pelanggan \"${pelanggan.namaPelanggan}\"?")
-            .setPositiveButton("Hapus") { _, _ ->
+            .setPositiveButton(getString(R.string.hapus)) { _, _ ->
                 val id = pelanggan.idPelanggan ?: return@setPositiveButton
                 pelangganRef.child(id).removeValue()
                     .addOnSuccessListener { Toast.makeText(this, "Pelanggan dihapus", Toast.LENGTH_SHORT).show() }
                     .addOnFailureListener { Toast.makeText(this, "Gagal menghapus", Toast.LENGTH_SHORT).show() }
             }
-            .setNegativeButton("Batal", null)
+            .setNegativeButton(getString(R.string.batal), null)
             .show()
     }
 }

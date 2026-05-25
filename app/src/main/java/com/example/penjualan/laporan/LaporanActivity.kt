@@ -1,5 +1,7 @@
 package com.example.penjualan.laporan
 
+import com.example.penjualan.BaseActivity
+
 import android.os.Bundle
 import android.widget.ImageView
 import android.widget.TextView
@@ -24,7 +26,7 @@ import androidx.appcompat.app.AlertDialog
 import com.dantsu.escposprinter.EscPosPrinter
 import com.dantsu.escposprinter.connection.bluetooth.BluetoothPrintersConnections
 
-class LaporanActivity : AppCompatActivity() {
+class LaporanActivity : BaseActivity() {
 
     private val transaksiRef = FirebaseUtils.getRef("transaksi")
 
@@ -47,16 +49,16 @@ class LaporanActivity : AppCompatActivity() {
 
         adapter = TransaksiAdapter(transaksiList, onDeleteClick = { transaksi ->
             AlertDialog.Builder(this)
-                .setTitle("Hapus Riwayat")
+                .setTitle(getString(R.string.hapus_riwayat))
                 .setMessage("Apakah Anda yakin ingin menghapus nota ${transaksi.nomorNota ?: "ini"}?")
-                .setPositiveButton("Hapus") { _, _ ->
+                .setPositiveButton(getString(R.string.hapus)) { _, _ ->
                     transaksi.idTransaksi?.let { id ->
                         transaksiRef.child(id).removeValue().addOnSuccessListener {
                             Toast.makeText(this, "Berhasil dihapus", Toast.LENGTH_SHORT).show()
                         }
                     }
                 }
-                .setNegativeButton("Batal", null)
+                .setNegativeButton(getString(R.string.batal), null)
                 .show()
         }, onPrintClick = { transaksi ->
             showPreviewDialog(transaksi)
@@ -127,10 +129,10 @@ class LaporanActivity : AppCompatActivity() {
         AlertDialog.Builder(this)
             .setTitle("Pratinjau Nota (Preview)")
             .setMessage(previewLayar)
-            .setPositiveButton("Cetak Sekarang") { _, _ ->
+            .setPositiveButton(getString(R.string.cetak_sekarang)) { _, _ ->
                 doPrintSingle(printText)
             }
-            .setNegativeButton("Batal", null)
+            .setNegativeButton(getString(R.string.batal), null)
             .show()
     }
 

@@ -41,7 +41,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Data Pelanggan"
+                android:text="@string/data_pelanggan_2"
                 android:textColor="@color/colorOnPrimary"
                 android:textSize="18sp"
                 android:textStyle="bold"/>

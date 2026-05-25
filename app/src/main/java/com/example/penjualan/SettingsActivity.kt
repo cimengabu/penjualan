@@ -11,7 +11,7 @@ import com.google.android.material.button.MaterialButton
 import com.google.android.material.switchmaterial.SwitchMaterial
 import com.google.firebase.auth.FirebaseAuth
 
-class SettingsActivity : AppCompatActivity() {
+class SettingsActivity : BaseActivity() {
 
     private lateinit var rgLanguage: RadioGroup
     private lateinit var rbIndo: RadioButton
@@ -19,10 +19,6 @@ class SettingsActivity : AppCompatActivity() {
     private lateinit var btnSave: MaterialButton
     private lateinit var btnLogout: MaterialButton
     private lateinit var switchNightMode: SwitchMaterial
-
-    override fun attachBaseContext(newBase: Context) {
-        super.attachBaseContext(LocaleHelper.onAttach(newBase))
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -22,9 +22,9 @@ import java.util.Calendar
 import java.util.Date
 import java.util.Locale
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity() {
 
-    private val productsRef  = FirebaseUtils.getRef("produk")
+    private val productsRef  = FirebaseUtils.getRef(getString(R.string.produk))
     private val transaksiRef = FirebaseUtils.getRef("transaksi")
     private val pelangganRef = FirebaseUtils.getRef("pelanggan")
 
@@ -49,10 +49,6 @@ class MainActivity : AppCompatActivity() {
     private lateinit var tvTotalProduk: TextView
     private lateinit var tvTotalPelanggan: TextView
     private lateinit var btnKasirPOS: MaterialButton
-
-    override fun attachBaseContext(newBase: Context) {
-        super.attachBaseContext(LocaleHelper.onAttach(newBase))
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

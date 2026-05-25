@@ -1,5 +1,7 @@
 package com.example.penjualan.cetak
 
+import com.example.penjualan.BaseActivity
+
 import android.content.Context
 import android.os.Bundle
 import android.print.PrintAttributes
@@ -28,7 +30,7 @@ import androidx.core.content.ContextCompat
 import com.dantsu.escposprinter.EscPosPrinter
 import com.dantsu.escposprinter.connection.bluetooth.BluetoothPrintersConnections
 
-class CetakActivity : AppCompatActivity() {
+class CetakActivity : BaseActivity() {
 
     private var myWebView: WebView? = null
 
@@ -113,12 +115,12 @@ class CetakActivity : AppCompatActivity() {
         val previewLayar = printText.replace(Regex("\\[C\\]|\\[L\\]|\\[R\\]|<b>|</b>|<font.*?>|</font>|<u>|</u>"), "")
 
         androidx.appcompat.app.AlertDialog.Builder(this)
-            .setTitle("Pratinjau Cetak Laporan")
+            .setTitle(getString(R.string.petinjau_cetak_laporan))
             .setMessage(previewLayar)
-            .setPositiveButton("Cetak Semua Laporan") { _, _ ->
+            .setPositiveButton(getString(R.string.cetak_semua_laporan)) { _, _ ->
                 executePrint(printText)
             }
-            .setNegativeButton("Batal", null)
+            .setNegativeButton(getString(R.string.batal), null)
             .show()
     }
 

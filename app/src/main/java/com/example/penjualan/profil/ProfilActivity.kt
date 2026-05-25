@@ -1,5 +1,7 @@
 package com.example.penjualan.profil
 
+import com.example.penjualan.BaseActivity
+
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
@@ -22,7 +24,7 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
 import java.io.ByteArrayOutputStream
 
-class ProfilActivity : AppCompatActivity() {
+class ProfilActivity : BaseActivity() {
 
     private val profilRef = FirebaseUtils.getRef("profil")
     private lateinit var auth: FirebaseAuth
@@ -95,11 +97,11 @@ class ProfilActivity : AppCompatActivity() {
     }
 
     private fun loadStats() {
-        FirebaseUtils.getRef("produk").addListenerForSingleValueEvent(object : com.google.firebase.database.ValueEventListener {
+        FirebaseUtils.getRef(getString(R.string.produk)).addListenerForSingleValueEvent(object : com.google.firebase.database.ValueEventListener {
             override fun onDataChange(s: com.google.firebase.database.DataSnapshot) { tvStatProduk.text = s.childrenCount.toString() }
             override fun onCancelled(e: com.google.firebase.database.DatabaseError) {}
         })
-        FirebaseUtils.getRef("cabang").addListenerForSingleValueEvent(object : com.google.firebase.database.ValueEventListener {
+        FirebaseUtils.getRef(getString(R.string.cabang)).addListenerForSingleValueEvent(object : com.google.firebase.database.ValueEventListener {
             override fun onDataChange(s: com.google.firebase.database.DataSnapshot) { tvStatCabang.text = s.childrenCount.toString() }
             override fun onCancelled(e: com.google.firebase.database.DatabaseError) {}
         })
@@ -154,7 +156,7 @@ class ProfilActivity : AppCompatActivity() {
                 startActivity(intent)
                 finish()
             }
-            .setNegativeButton("Batal", null)
+            .setNegativeButton(getString(R.string.batal), null)
             .show()
     }
 

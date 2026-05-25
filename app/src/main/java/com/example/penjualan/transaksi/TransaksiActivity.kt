@@ -1,5 +1,7 @@
 package com.example.penjualan.transaksi
 
+import com.example.penjualan.BaseActivity
+
 import android.os.Bundle
 import android.view.View
 import android.widget.ArrayAdapter
@@ -25,10 +27,10 @@ import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
 
-class TransaksiActivity : AppCompatActivity() {
+class TransaksiActivity : BaseActivity() {
 
     private val transaksiRef = FirebaseUtils.getRef("transaksi")
-    private val produkRef = FirebaseUtils.getRef("produk")
+    private val produkRef = FirebaseUtils.getRef(getString(R.string.produk))
 
     private lateinit var btnBack: ImageView
     private lateinit var rvTransaksi: RecyclerView
@@ -106,13 +108,13 @@ class TransaksiActivity : AppCompatActivity() {
         val spinnerProduk = dialogView.findViewById<Spinner>(R.id.spinnerProduk)
         val etJumlah = dialogView.findViewById<TextInputEditText>(R.id.etJumlahTransaksi)
 
-        val produkNames = produkList.map { it.name ?: "Produk" }.toTypedArray()
+        val produkNames = produkList.map { it.name ?: getString(R.string.produk) }.toTypedArray()
         spinnerProduk.adapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, produkNames)
 
         AlertDialog.Builder(this)
             .setTitle("Tambah Transaksi")
             .setView(dialogView)
-            .setPositiveButton("Simpan") { _, _ ->
+            .setPositiveButton(getString(R.string.simpan)) { _, _ ->
                 val selectedIndex = spinnerProduk.selectedItemPosition
                 val produk = produkList.getOrNull(selectedIndex) ?: return@setPositiveButton
                 val jumlah = etJumlah.text.toString().trim().toIntOrNull() ?: 1
@@ -154,7 +156,7 @@ class TransaksiActivity : AppCompatActivity() {
                         Toast.makeText(this, "Gagal menyimpan transaksi: ${it.message}", Toast.LENGTH_SHORT).show()
                     }
             }
-            .setNegativeButton("Batal", null)
+            .setNegativeButton(getString(R.string.batal), null)
             .show()
     }
 
@@ -163,13 +165,13 @@ class TransaksiActivity : AppCompatActivity() {
         AlertDialog.Builder(this)
             .setTitle("Hapus Transaksi")
             .setMessage("Hapus transaksi \"$title\"?")
-            .setPositiveButton("Hapus") { _, _ ->
+            .setPositiveButton(getString(R.string.hapus)) { _, _ ->
                 val id = transaksi.idTransaksi ?: return@setPositiveButton
                 transaksiRef.child(id).removeValue()
                     .addOnSuccessListener { Toast.makeText(this, "Transaksi dihapus", Toast.LENGTH_SHORT).show() }
                     .addOnFailureListener { Toast.makeText(this, "Gagal menghapus: ${it.message}", Toast.LENGTH_SHORT).show() }
             }
-            .setNegativeButton("Batal", null)
+            .setNegativeButton(getString(R.string.batal), null)
             .show()
     }
 }

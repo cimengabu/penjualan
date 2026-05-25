@@ -1,5 +1,7 @@
 package com.example.penjualan.kategori
 
+import com.example.penjualan.BaseActivity
+
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
@@ -18,7 +20,7 @@ import com.example.penjualan.viewmodel.DataKategoriViewModel
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.firebase.database.FirebaseDatabase
 
-class DatakategoriActivity : AppCompatActivity() {
+class DatakategoriActivity : BaseActivity() {
 
     private lateinit var rvKategori: RecyclerView
     private lateinit var btnBack: ImageView
@@ -87,7 +89,7 @@ class DatakategoriActivity : AppCompatActivity() {
     private fun showCategoryActionDialog(category: ModelKategori) {
         val options = arrayOf("Ubah Kategori", "Hapus Kategori")
         AlertDialog.Builder(this)
-            .setTitle(category.namaKategori ?: "Kategori")
+            .setTitle(category.namaKategori ?: getString(R.string.kategori))
             .setItems(options) { _, which ->
                 when (which) {
                     0 -> { // Edit
@@ -110,9 +112,9 @@ class DatakategoriActivity : AppCompatActivity() {
         AlertDialog.Builder(this)
             .setTitle("Hapus Kategori")
             .setMessage("Apakah Anda yakin ingin menghapus kategori \"${category.namaKategori}\"?")
-            .setPositiveButton("Hapus") { _, _ ->
+            .setPositiveButton(getString(R.string.hapus)) { _, _ ->
                 val categoryId = category.idKategori ?: return@setPositiveButton
-                val categoryRef = FirebaseUtils.getRef("kategori").child(categoryId)
+                val categoryRef = FirebaseUtils.getRef(getString(R.string.kategori)).child(categoryId)
                 categoryRef.removeValue()
                     .addOnSuccessListener {
                         Toast.makeText(this, "Kategori berhasil dihapus", Toast.LENGTH_SHORT).show()
@@ -121,7 +123,7 @@ class DatakategoriActivity : AppCompatActivity() {
                         Toast.makeText(this, "Gagal menghapus kategori: ${it.message}", Toast.LENGTH_SHORT).show()
                     }
             }
-            .setNegativeButton("Batal", null)
+            .setNegativeButton(getString(R.string.batal), null)
             .show()
     }
 }
