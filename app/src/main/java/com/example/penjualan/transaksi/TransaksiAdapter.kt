@@ -13,7 +13,8 @@ import java.util.Locale
 
 class TransaksiAdapter(
     private var transaksiList: List<ModelTransaksi>,
-    private val onDeleteClick: (ModelTransaksi) -> Unit
+    private val onDeleteClick: (ModelTransaksi) -> Unit,
+    private val onPrintClick: ((ModelTransaksi) -> Unit)? = null
 ) : RecyclerView.Adapter<TransaksiAdapter.TransaksiViewHolder>() {
 
     class TransaksiViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -23,6 +24,7 @@ class TransaksiAdapter(
         val tvTotalHarga: TextView = itemView.findViewById(R.id.tvTotalHarga)
         val tvTanggal: TextView = itemView.findViewById(R.id.tvTanggal)
         val btnDelete: ImageButton = itemView.findViewById(R.id.btnDelete)
+        val btnPrint: ImageButton? = itemView.findViewById(R.id.btnPrintTransaksi)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TransaksiViewHolder {
@@ -47,6 +49,13 @@ class TransaksiAdapter(
         holder.tvTotalHarga.text = "Total: ${fmt.format(transaksi.totalHarga)}"
 
         holder.btnDelete.setOnClickListener { onDeleteClick(transaksi) }
+        
+        if (onPrintClick != null && holder.btnPrint != null) {
+            holder.btnPrint.visibility = View.VISIBLE
+            holder.btnPrint.setOnClickListener { onPrintClick.invoke(transaksi) }
+        } else {
+            holder.btnPrint?.visibility = View.GONE
+        }
     }
 
     override fun getItemCount(): Int = transaksiList.size

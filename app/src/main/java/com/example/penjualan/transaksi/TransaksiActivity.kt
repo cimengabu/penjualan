@@ -50,7 +50,7 @@ class TransaksiActivity : AppCompatActivity() {
 
         btnBack.setOnClickListener { finish() }
 
-        adapter = TransaksiAdapter(transaksiList) { showDeleteDialog(it) }
+        adapter = TransaksiAdapter(transaksiList, onDeleteClick = { showDeleteDialog(it) })
         rvTransaksi.layoutManager = LinearLayoutManager(this)
         rvTransaksi.adapter = adapter
 

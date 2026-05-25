@@ -515,7 +515,7 @@
                         app:tint="@color/colorPrimaryVariant"/>
                     <TextView android:id="@+id/txt7" android:layout_width="wrap_content"
                         android:layout_height="wrap_content" android:layout_marginTop="6dp"
-                        android:text="@string/mencetak" android:textColor="@color/colorOnSurface"
+                        android:text="Cetak Laporan" android:textColor="@color/colorOnSurface"
                         android:textSize="11sp" android:textStyle="bold"/>
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>

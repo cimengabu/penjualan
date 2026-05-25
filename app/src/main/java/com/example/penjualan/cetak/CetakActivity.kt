@@ -86,35 +86,48 @@ class CetakActivity : AppCompatActivity() {
     }
 
     private fun doBluetoothPrint(transaksiList: List<ModelTransaksi>) {
+        val fmt = NumberFormat.getCurrencyInstance(Locale("in", "ID"))
+        val dateString = SimpleDateFormat("dd MMMM yyyy", Locale("id", "ID")).format(Date())
+        
+        val header = "[C]<b><font size='big'>Laporan Penjualan</font></b>\n" +
+                     "[C]Tanggal: $dateString\n" +
+                     "[C]--------------------------------\n"
+                     
+        var totalKeseluruhan = 0.0
+        val itemsBuilder = StringBuilder()
+        
+        if (transaksiList.isEmpty()) {
+            itemsBuilder.append("[C]Belum ada transaksi\n")
+        } else {
+            for (t in transaksiList) {
+                totalKeseluruhan += t.totalHarga
+                itemsBuilder.append("[L]${t.namaProduk ?: "-"}\n")
+                itemsBuilder.append("[L]  Qty: ${t.jumlah} [R]${fmt.format(t.totalHarga)}\n")
+            }
+        }
+        
+        val footer = "[C]--------------------------------\n" +
+                     "[L]<b>Total Pendapatan</b> [R]<b>${fmt.format(totalKeseluruhan)}</b>\n"
+        
+        val printText = header + itemsBuilder.toString() + footer
+        val previewLayar = printText.replace(Regex("\\[C\\]|\\[L\\]|\\[R\\]|<b>|</b>|<font.*?>|</font>|<u>|</u>"), "")
+
+        androidx.appcompat.app.AlertDialog.Builder(this)
+            .setTitle("Pratinjau Cetak Laporan")
+            .setMessage(previewLayar)
+            .setPositiveButton("Cetak Semua Laporan") { _, _ ->
+                executePrint(printText)
+            }
+            .setNegativeButton("Batal", null)
+            .show()
+    }
+
+    private fun executePrint(printText: String) {
         try {
             val connections = BluetoothPrintersConnections.selectFirstPaired()
             if (connections != null) {
                 val printer = EscPosPrinter(connections, 203, 48f, 32)
-                
-                val fmt = NumberFormat.getCurrencyInstance(Locale("in", "ID"))
-                val dateString = SimpleDateFormat("dd MMMM yyyy", Locale("id", "ID")).format(Date())
-                
-                val header = "[C]<b><font size='big'>Laporan Penjualan</font></b>\n" +
-                             "[C]Tanggal: $dateString\n" +
-                             "[C]--------------------------------\n"
-                             
-                var totalKeseluruhan = 0.0
-                val itemsBuilder = StringBuilder()
-                
-                if (transaksiList.isEmpty()) {
-                    itemsBuilder.append("[C]Belum ada transaksi\n")
-                } else {
-                    for (t in transaksiList) {
-                        totalKeseluruhan += t.totalHarga
-                        itemsBuilder.append("[L]${t.namaProduk ?: "-"}\n")
-                        itemsBuilder.append("[L]  Qty: ${t.jumlah} [R]${fmt.format(t.totalHarga)}\n")
-                    }
-                }
-                
-                val footer = "[C]--------------------------------\n" +
-                             "[L]<b>Total Pendapatan</b> [R]<b>${fmt.format(totalKeseluruhan)}</b>\n"
-                
-                printer.printFormattedText(header + itemsBuilder.toString() + footer)
+                printer.printFormattedText(printText)
                 printer.disconnectPrinter()
             } else {
                 Toast.makeText(this, "Tidak ada printer Bluetooth yang dipasangkan!", Toast.LENGTH_SHORT).show()
