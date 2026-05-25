@@ -80,6 +80,9 @@ dependencies {
 
     // Print framework (AndroidX)
     implementation("androidx.print:print:1.0.0")
+
+    // Bluetooth Thermal Printer (ESC/POS)
+    implementation("com.github.DantSu:ESCPOS-ThermalPrinter-Android:3.3.0")
 }
 
 kapt {

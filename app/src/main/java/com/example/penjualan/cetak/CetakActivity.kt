@@ -21,6 +21,12 @@ import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Date
 import java.util.Locale
+import android.Manifest
+import android.content.pm.PackageManager
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
+import com.dantsu.escposprinter.EscPosPrinter
+import com.dantsu.escposprinter.connection.bluetooth.BluetoothPrintersConnections
 
 class CetakActivity : AppCompatActivity() {
 
@@ -58,99 +64,63 @@ class CetakActivity : AppCompatActivity() {
         })
     }
 
+    private val PERMISSION_BLUETOOTH = 101
+    private var pendingTransaksiList: List<ModelTransaksi>? = null
+
     private fun doPrint(transaksiList: List<ModelTransaksi>) {
-        // 1. Gunakan 'this' secara langsung untuk merujuk murni ke Activity
-        val webView = WebView(this)
-        webView.webViewClient = object : WebViewClient() {
-            override fun onPageFinished(view: WebView, url: String) {
-                createWebPrintJob(view)
-                // 2. JANGAN di-null-kan di sini! Sistem printer butuh waktu buat membaca WebView.
-                // myWebView = null
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.S) {
+            if (ContextCompat.checkSelfPermission(this, Manifest.permission.BLUETOOTH_CONNECT) != PackageManager.PERMISSION_GRANTED) {
+                pendingTransaksiList = transaksiList
+                ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.BLUETOOTH_CONNECT, Manifest.permission.BLUETOOTH_SCAN), PERMISSION_BLUETOOTH)
+                return
             }
         }
-
-        val fmt = NumberFormat.getCurrencyInstance(Locale("in", "ID"))
-        val dateString = SimpleDateFormat("dd MMMM yyyy HH:mm:ss", Locale("id", "ID")).format(Date())
-
-        var totalKeseluruhan = 0.0
-        val tableRows = StringBuilder()
-
-        if (transaksiList.isEmpty()) {
-            tableRows.append("<tr><td colspan='4' style='text-align:center;'>Belum ada transaksi</td></tr>")
-        } else {
-            for (t in transaksiList) {
-                totalKeseluruhan += t.totalHarga
-                tableRows.append("""
-                    <tr>
-                        <td>${t.namaProduk ?: "-"}</td>
-                        <td>${t.kategori ?: "-"}</td>
-                        <td style='text-align:center;'>${t.jumlah}</td>
-                        <td style='text-align:right;'>${fmt.format(t.totalHarga)}</td>
-                    </tr>
-                """.trimIndent())
-            }
-        }
-
-        val htmlDocument = """
-            <html>
-                <head>
-                    <style>
-                        body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; margin: 40px; color: #333; }
-                        .header { text-align: center; margin-bottom: 30px; }
-                        h1 { color: #4F46E5; margin-bottom: 5px; font-size: 28px; }
-                        .subtitle { color: #64748B; font-size: 14px; margin-top: 0; }
-                        .meta-info { margin-bottom: 20px; font-size: 14px; }
-                        table { width: 100%; border-collapse: collapse; margin-top: 10px; }
-                        th, td { border-bottom: 1px solid #E2E8F0; padding: 12px 8px; text-align: left; }
-                        th { background-color: #F8FAFC; color: #475569; font-weight: bold; text-transform: uppercase; font-size: 12px; }
-                        td { font-size: 14px; }
-                        .total-row td { font-weight: bold; font-size: 16px; color: #0F766E; border-top: 2px solid #4F46E5; }
-                        .footer { text-align: center; margin-top: 60px; font-size: 12px; color: #94A3B8; }
-                    </style>
-                </head>
-                <body>
-                    <div class="header">
-                        <h1>NOTA PENJUALAN</h1>
-                        <p class="subtitle">Nota Resmi Transaksi Toko</p>
-                    </div>
-                    <div class="meta-info">
-                        <p><b>Tanggal Cetak:</b> $dateString</p>
-                    </div>
-                    <table>
-                        <tr>
-                            <th>Nama Produk</th>
-                            <th>Kategori</th>
-                            <th style='text-align:center;'>Qty</th>
-                            <th style='text-align:right;'>Total Harga</th>
-                        </tr>
-                        $tableRows
-                        <tr class="total-row">
-                            <td colspan="3" style='text-align:right;'>TOTAL PENDAPATAN</td>
-                            <td style='text-align:right;'>${fmt.format(totalKeseluruhan)}</td>
-                        </tr>
-                    </table>
-                    <div class="footer">
-                        <p>Dokumen ini di-generate secara otomatis oleh sistem.</p>
-                        <p>&copy; ${Calendar.getInstance().get(Calendar.YEAR)} Aplikasi Penjualan</p>
-                    </div>
-                </body>
-            </html>
-        """.trimIndent()
-
-        webView.loadDataWithBaseURL(null, htmlDocument, "text/HTML", "UTF-8", null)
-        myWebView = webView
+        doBluetoothPrint(transaksiList)
     }
 
-    private fun createWebPrintJob(webView: WebView) {
-        // 3. Panggil sistem servis secara langsung, tanpa tambahan this@CetakActivity
-        val printManager = getSystemService(Context.PRINT_SERVICE) as PrintManager
-        val jobName = "${getString(R.string.app_name)} Document"
-        val printAdapter = webView.createPrintDocumentAdapter(jobName)
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        if (requestCode == PERMISSION_BLUETOOTH && grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+            pendingTransaksiList?.let { doBluetoothPrint(it) }
+        }
+    }
 
+    private fun doBluetoothPrint(transaksiList: List<ModelTransaksi>) {
         try {
-            printManager.print(jobName, printAdapter, PrintAttributes.Builder().build())
+            val connections = BluetoothPrintersConnections.selectFirstPaired()
+            if (connections != null) {
+                val printer = EscPosPrinter(connections, 203, 48f, 32)
+                
+                val fmt = NumberFormat.getCurrencyInstance(Locale("in", "ID"))
+                val dateString = SimpleDateFormat("dd MMMM yyyy", Locale("id", "ID")).format(Date())
+                
+                val header = "[C]<b><font size='big'>Laporan Penjualan</font></b>\n" +
+                             "[C]Tanggal: $dateString\n" +
+                             "[C]--------------------------------\n"
+                             
+                var totalKeseluruhan = 0.0
+                val itemsBuilder = StringBuilder()
+                
+                if (transaksiList.isEmpty()) {
+                    itemsBuilder.append("[C]Belum ada transaksi\n")
+                } else {
+                    for (t in transaksiList) {
+                        totalKeseluruhan += t.totalHarga
+                        itemsBuilder.append("[L]${t.namaProduk ?: "-"}\n")
+                        itemsBuilder.append("[L]  Qty: ${t.jumlah} [R]${fmt.format(t.totalHarga)}\n")
+                    }
+                }
+                
+                val footer = "[C]--------------------------------\n" +
+                             "[L]<b>Total Pendapatan</b> [R]<b>${fmt.format(totalKeseluruhan)}</b>\n"
+                
+                printer.printFormattedText(header + itemsBuilder.toString() + footer)
+                printer.disconnectPrinter()
+            } else {
+                Toast.makeText(this, "Tidak ada printer Bluetooth yang dipasangkan!", Toast.LENGTH_SHORT).show()
+            }
         } catch (e: Exception) {
-            Toast.makeText(this, "Gagal mencetak: ${e.message}", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Gagal mencetak Bluetooth: ${e.message}", Toast.LENGTH_SHORT).show()
         }
     }
 }
