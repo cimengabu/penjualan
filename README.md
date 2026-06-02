@@ -60,29 +60,29 @@ Untuk memahami bagaimana seluruh komponen saling berinteraksi, berikut adalah al
 
 ```mermaid
 graph TD
-    A([Mulai Aplikasi / Splash Screen]) --> B{Sesi Aktif? (Sudah Login)}
-    B -- Belum --> C[Halaman Login & Registrasi]
-    C --> D[Verifikasi via Firebase Auth]
-    D --> E[Beranda POS (Dashboard Master)]
+    A(["Mulai Aplikasi / Splash Screen"]) --> B{"Sesi Aktif? (Sudah Login)"}
+    B -- Belum --> C["Halaman Login & Registrasi"]
+    C --> D["Verifikasi via Firebase Auth"]
+    D --> E["Beranda POS (Dashboard Master)"]
     B -- Sudah --> E
     
-    E --> F[Modul Manajemen Data]
-    F --> F1(Tambah/Edit Produk)
-    F --> F2(Manajemen Kategori & Filter)
-    F --> F3(Buku Kontak Pelanggan)
-    F --> F4(Data Pegawai & Cabang)
+    E --> F["Modul Manajemen Data"]
+    F --> F1("Tambah/Edit Produk")
+    F --> F2("Manajemen Kategori & Filter")
+    F --> F3("Buku Kontak Pelanggan")
+    F --> F4("Data Pegawai & Cabang")
     
-    E --> G[Modul Utama: Kasir]
-    G --> G1(Tap Produk & Masukkan ke Keranjang)
-    G1 --> G2(Checkout: Pilih Pelanggan, Diskon & Pajak)
-    G2 --> G3(Proses Pembayaran: Input Uang Tunai)
-    G3 --> G4[(Transaksi Tersimpan ke Firebase)]
-    G4 --> G5(Cetak Struk Bluetooth Fisik)
-    G4 --> G6(Bagikan Struk Digital Berupa Gambar)
+    E --> G["Modul Utama: Kasir"]
+    G --> G1("Tap Produk & Masukkan ke Keranjang")
+    G1 --> G2("Checkout: Pilih Pelanggan, Diskon & Pajak")
+    G2 --> G3("Proses Pembayaran: Input Uang Tunai")
+    G3 --> G4[("Transaksi Tersimpan ke Firebase")]
+    G4 --> G5("Cetak Struk Bluetooth Fisik")
+    G4 --> G6("Bagikan Struk Digital Berupa Gambar")
     
-    E --> H[Laporan & Rekapitulasi]
-    H --> H1(Lihat Riwayat Seluruh Transaksi)
-    H --> H2(Pengaturan Toko & Koneksi Printer)
+    E --> H["Laporan & Rekapitulasi"]
+    H --> H1("Lihat Riwayat Seluruh Transaksi")
+    H --> H2("Pengaturan Toko & Koneksi Printer")
 ```
 
 ---
@@ -93,10 +93,10 @@ Google merekomendasikan penggunaan **MVVM (Model-View-ViewModel)** agar antarmuk
 
 ```mermaid
 graph LR
-    V[View: Activity/Fragment] -- Memantau Data --> VM[ViewModel]
+    V["View: Activity/Fragment"] -- Memantau Data --> VM["ViewModel"]
     V -- User Interaction (Klik) --> VM
-    VM -- Meminta Operasi Data --> R[Repository / Firebase Utils]
-    R -- Eksekusi Read/Write --> F[(Firebase Cloud Servers)]
+    VM -- Meminta Operasi Data --> R["Repository / Firebase Utils"]
+    R -- Eksekusi Read/Write --> F[("Firebase Cloud Servers")]
     F -- Respon Callback --> R
     R -- Update State --> VM
     VM -- Memperbarui UI secara reaktif --> V
