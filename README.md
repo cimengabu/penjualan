@@ -16,25 +16,18 @@ Aplikasi **Point‑of‑Sale (POS)** modern untuk Android, dibangun dengan Kotli
 ---
 
 ## 📸 Tampilan Aplikasi
-| Halaman | Gambar |
-| ------- | ------ |
-| **Login** | ![Login Screen](assets/Login%20Screen.jpeg) |
-| **Registrasi** | ![Register Screen](assets/registrasi%20Screen.jpeg) |
-| **Beranda POS** | ![Home Screen](assets/Home%20Screen.jpeg) |
-| **Kategori** | ![Kategori Screen](assets/kategori.jpeg) |
-| **Tambah Kategori** | ![Tambah Kategori Screen](assets/Tambah%20Kategori.jpeg) |
-| **Produk** | ![Produk Screen](assets/Produk.jpeg) |
-| **Tambah Produk** | ![Tambah Produk Screen](assets/Tambah%20Produk.jpeg) |
-| **Pelanggan** | ![Pelanggan Screen](assets/Pelanggan.jpeg) |
-| **Pegawai** | ![Pegawai Screen](assets/Pegawai.jpeg) |
-| **Cabang** | ![Cabang Screen](assets/Cabang.jpeg) |
-| **Transaksi** | ![Transaksi Screen](assets/Transaksi.jpeg) |
-| **Laporan Penjualan** | ![Laporan Penjualan Screen](assets/Laporan%20Penjualan.jpeg) |
-| **Pengaturan** | ![Pengaturan Screen](assets/Pengaturan.jpeg) |
-| **Keranjang & Checkout** | ![Checkout Screen](assets/Checkout.jpeg) |
-| **Nota** | ![Nota](assets/Nota.jpeg) |
-| **Printer** | ![Printer Settings](assets/Printer.jpeg) |
-| **Profil** | ![Profil Screen](assets/Profil.jpeg) |
+
+| **Login** | **Registrasi** | **Beranda POS** | **Kategori** |
+|:---:|:---:|:---:|:---:|
+| <img src="assets/Login%20Screen.jpeg" width="200"> | <img src="assets/registrasi%20Screen.jpeg" width="200"> | <img src="assets/Home%20Screen.jpeg" width="200"> | <img src="assets/kategori.jpeg" width="200"> |
+| **Tambah Kategori** | **Produk** | **Tambah Produk** | **Pelanggan** |
+| <img src="assets/Tambah%20Kategori.jpeg" width="200"> | <img src="assets/Produk.jpeg" width="200"> | <img src="assets/Tambah%20Produk.jpeg" width="200"> | <img src="assets/Pelanggan.jpeg" width="200"> |
+| **Pegawai** | **Cabang** | **Transaksi** | **Laporan Penjualan** |
+| <img src="assets/Pegawai.jpeg" width="200"> | <img src="assets/Cabang.jpeg" width="200"> | <img src="assets/Transaksi.jpeg" width="200"> | <img src="assets/Laporan%20Penjualan.jpeg" width="200"> |
+| **Pengaturan** | **Keranjang & Checkout** | **Nota** | **Printer** |
+| <img src="assets/Pengaturan.jpeg" width="200"> | <img src="assets/Checkout.jpeg" width="200"> | <img src="assets/Nota.jpeg" width="200"> | <img src="assets/Printer.jpeg" width="200"> |
+| **Profil** | | | |
+| <img src="assets/Profil.jpeg" width="200"> | | | |
 
 ---
 

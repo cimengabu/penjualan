@@ -6,6 +6,7 @@ import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.Canvas
+import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Bundle
 import androidx.print.PrintHelper
@@ -189,80 +190,3 @@ class ReceiptActivity : BaseActivity() {
             startActivity(Intent.createChooser(shareIntent, getString(R.string.bagikan)))
         } catch (e: Exception) {
             Toast.makeText(this, "${getString(R.string.gagal_membagikan_nota)} ${e.message}", Toast.LENGTH_SHORT).show()
-        }
-    }
-
-    private val PERMISSION_BLUETOOTH = 101
-
-    private fun printReceipt() {
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.S) {
-            if (ContextCompat.checkSelfPermission(this, Manifest.permission.BLUETOOTH_CONNECT) != PackageManager.PERMISSION_GRANTED) {
-                ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.BLUETOOTH_CONNECT, Manifest.permission.BLUETOOTH_SCAN), PERMISSION_BLUETOOTH)
-                return
-            }
-        }
-        doBluetoothPrint()
-    }
-
-    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-        if (requestCode == PERMISSION_BLUETOOTH && grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-            doBluetoothPrint()
-        }
-    }
-
-    private fun doBluetoothPrint() {
-        val header = "[C]<b><font size='big'>Nota Penjualan</font></b>\n" +
-                     "[C]${findViewById<TextView>(R.id.tvAlamatToko).text}\n" +
-                     "[C]${findViewById<TextView>(R.id.tvTelpToko).text}\n" +
-                     "[L]\n" +
-                     "[L]No : ${findViewById<TextView>(R.id.tvNomorNota).text}\n" +
-                     "[L]Tgl: ${findViewById<TextView>(R.id.tvTanggalNota).text}\n" +
-                     "[C]--------------------------------\n"
-                     
-        val itemsBuilder = StringBuilder()
-        val items = intent.getParcelableArrayListExtra<CheckoutActivity.CartItemParcel>("ITEMS") ?: emptyList()
-        items.forEach { item ->
-            itemsBuilder.append("[L]${item.namaProduk}\n")
-            itemsBuilder.append("[L]  ${item.jumlah} x ${fmt.format(item.hargaSatuan)} [R]${fmt.format(item.subtotal)}\n")
-        }
-        
-        val footer = "[C]--------------------------------\n" +
-                     "[L]Subtotal [R]${findViewById<TextView>(R.id.tvSubtotalNota).text}\n" +
-                     "[L]Diskon   [R]${findViewById<TextView>(R.id.tvDiskonNota).text}\n" +
-                     "[L]Pajak    [R]${findViewById<TextView>(R.id.tvPajakNota).text}\n" +
-                     "[L]<b>Total</b> [R]<b>${findViewById<TextView>(R.id.tvTotalNota).text}</b>\n" +
-                     "[L]Bayar    [R]${findViewById<TextView>(R.id.tvDibayarNota).text}\n" +
-                     "[L]Kembali  [R]${findViewById<TextView>(R.id.tvKembalianNota).text}\n" +
-                     "[C]--------------------------------\n" +
-                     "[C]Terima Kasih\n"
-
-        val printText = header + itemsBuilder.toString() + footer
-        
-        val previewLayar = printText.replace(Regex("\\[C\\]|\\[L\\]|\\[R\\]|<b>|</b>|<font.*?>|</font>|<u>|</u>"), "")
-
-        androidx.appcompat.app.AlertDialog.Builder(this)
-            .setTitle("Pratinjau Nota (Preview)")
-            .setMessage(previewLayar)
-            .setPositiveButton(getString(R.string.cetak_sekarang)) { _, _ ->
-                executePrint(printText)
-            }
-            .setNegativeButton(getString(R.string.batal), null)
-            .show()
-    }
-
-    private fun executePrint(printText: String) {
-        try {
-            val connections = BluetoothPrintersConnections.selectFirstPaired()
-            if (connections != null) {
-                val printer = EscPosPrinter(connections, 203, 48f, 32)
-                printer.printFormattedText(printText)
-                printer.disconnectPrinter()
-            } else {
-                Toast.makeText(this, "Tidak ada printer Bluetooth yang dipasangkan!", Toast.LENGTH_SHORT).show()
-            }
-        } catch (e: Exception) {
-            Toast.makeText(this, "Gagal mencetak Bluetooth: ${e.message}", Toast.LENGTH_SHORT).show()
-        }
-    }
-}
