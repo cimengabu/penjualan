@@ -18,23 +18,23 @@ Aplikasi **Point‑of‑Sale (POS)** modern untuk Android, dibangun dengan Kotli
 ## 📸 Tampilan Aplikasi
 | Halaman | Gambar |
 | ------- | ------ |
-| **Login** | ![Login Screen](https://raw.githubusercontent.com/cimengabu/penjualan/main/assets/Login%20Screen.jpeg) |
-| **Registrasi** | ![Register Screen](https://raw.githubusercontent.com/cimengabu/penjualan/main/assets/registrasi%20Screen.jpeg) |
-| **Beranda POS** | ![Home Screen](https://raw.githubusercontent.com/cimengabu/penjualan/main/assets/Home%20Screen.jpeg) |
-| **Kategori** | ![Kategori Screen](https://raw.githubusercontent.com/cimengabu/penjualan/main/assets/kategori.jpeg) |
-| **Tambah Kategori** | ![Tambah Kategori Screen](https://raw.githubusercontent.com/cimengabu/penjualan/main/assets/Tambah%20Kategori.jpeg) |
-| **Produk** | ![Produk Screen](https://raw.githubusercontent.com/cimengabu/penjualan/main/assets/Produk.jpeg) |
-| **Tambah Produk** | ![Tambah Produk Screen](https://raw.githubusercontent.com/cimengabu/penjualan/main/assets/Tambah%20Produk.jpeg) |
-| **Pelanggan** | ![Pelanggan Screen](https://raw.githubusercontent.com/cimengabu/penjualan/main/assets/Pelanggan.jpeg) |
-| **Pegawai** | ![Pegawai Screen](https://raw.githubusercontent.com/cimengabu/penjualan/main/assets/Pegawai.jpeg) |
-| **Cabang** | ![Cabang Screen](https://raw.githubusercontent.com/cimengabu/penjualan/main/assets/Cabang.jpeg) |
-| **Transaksi** | ![Transaksi Screen](https://raw.githubusercontent.com/cimengabu/penjualan/main/assets/Transaksi.jpeg) |
-| **Laporan Penjualan** | ![Laporan Penjualan Screen](https://raw.githubusercontent.com/cimengabu/penjualan/main/assets/Laporan%20Penjualan.jpeg) |
-| **Pengaturan** | ![Pengaturan Screen](https://raw.githubusercontent.com/cimengabu/penjualan/main/assets/Pengaturan.jpeg) |
-| **Keranjang & Checkout** | ![Checkout Screen](https://raw.githubusercontent.com/cimengabu/penjualan/main/assets/Checkout.jpeg) |
-| **Nota** | ![Nota](https://raw.githubusercontent.com/cimengabu/penjualan/main/assets/Nota.jpeg) |
-| **Printer** | ![Printer Settings](https://raw.githubusercontent.com/cimengabu/penjualan/main/assets/Printer.jpeg) |
-| **Profil** | ![Profil Screen](https://raw.githubusercontent.com/cimengabu/penjualan/main/assets/Profil.jpeg) |
+| **Login** | ![Login Screen](assets/Login%20Screen.jpeg) |
+| **Registrasi** | ![Register Screen](assets/registrasi%20Screen.jpeg) |
+| **Beranda POS** | ![Home Screen](assets/Home%20Screen.jpeg) |
+| **Kategori** | ![Kategori Screen](assets/kategori.jpeg) |
+| **Tambah Kategori** | ![Tambah Kategori Screen](assets/Tambah%20Kategori.jpeg) |
+| **Produk** | ![Produk Screen](assets/Produk.jpeg) |
+| **Tambah Produk** | ![Tambah Produk Screen](assets/Tambah%20Produk.jpeg) |
+| **Pelanggan** | ![Pelanggan Screen](assets/Pelanggan.jpeg) |
+| **Pegawai** | ![Pegawai Screen](assets/Pegawai.jpeg) |
+| **Cabang** | ![Cabang Screen](assets/Cabang.jpeg) |
+| **Transaksi** | ![Transaksi Screen](assets/Transaksi.jpeg) |
+| **Laporan Penjualan** | ![Laporan Penjualan Screen](assets/Laporan%20Penjualan.jpeg) |
+| **Pengaturan** | ![Pengaturan Screen](assets/Pengaturan.jpeg) |
+| **Keranjang & Checkout** | ![Checkout Screen](assets/Checkout.jpeg) |
+| **Nota** | ![Nota](assets/Nota.jpeg) |
+| **Printer** | ![Printer Settings](assets/Printer.jpeg) |
+| **Profil** | ![Profil Screen](assets/Profil.jpeg) |
 
 ---
 
